@@ -318,7 +318,7 @@ html {
 }
 
 .footer-text {
-  font-size: var(--fs-6);
+  font-size: var(--fs-8);
   margin-block-end: 25px;
 }
 

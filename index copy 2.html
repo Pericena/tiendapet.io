@@ -1,122 +1,35 @@
-<!DOCTYPE html>
-<html lang="es">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
 
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Mascotas</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Megapet</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo/logo.png" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="stylesheet" href="./assets/css/css.css">
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+</head>
+
     <style>
-        body {
-            font-family: 'Roboto Slab', serif;
-
-        }
-
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-        }
-
-        .logo {
-            flex: 1;
-            display: flex;
-            justify-content: flex-start;
-        }
-
-        .search {
-            flex: 2;
-            display: flex;
-            justify-content: center;
-        }
-
-        .cart {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        nav {
-            width: 100%;
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        nav .category {
-            flex: 1;
-            text-align: center;
-
-            position: relative;
-        }
-
-        nav label {
-            cursor: pointer;
-
-            display: block;
-        }
-
-        nav label:hover {
-            background-color: #ff0000;
-        }
-
-
-
-        @media (max-width: 900px) {
-            nav {
-                display: none;
-            }
-        }
-
-        .custom-card {
-            height: 500px;
-        }
-
-        .custom-card-2 {
-            height: 250px;
-        }
-
-        .center-div {
-
-            display: flex;
-
-            justify-content: center;
-            /* Centra horizontalmente */
-            align-items: center;
-            /* Centra verticalmente */
-            height: 50px;
-            /* Puedes ajustar la altura según tus necesidades */
-        }
-
-        .center-div-top {
-
-            display: flex;
-
-            justify-content: center;
-            /* Centra horizontalmente */
-            align-items: center;
-            /* Centra verticalmente */
-            height: 30px;
-            /* Puedes ajustar la altura según tus necesidades */
-        }
-
+  
         .carousel {
             position: relative;
             width: 100%;
@@ -221,161 +134,11 @@
     </style>
 
     <style>
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-            position: relative;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
-
-        .extra-links {
-            text-align: right;
-            margin-right: 20px;
-        }
-
-        .extra-links a {
-            margin-left: 15px;
-            text-decoration: none;
-            color: #333;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            width: 100%;
-            left: 0;
-            border-radius: 15px;
-            background-color: #f1f1f1;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            min-width: 200px;
-            max-width: 1400px;
-        }
-
-        .dropdown-content ul {
-            list-style: none;
-            margin: 0;
-
-
-        }
-
-        .dropdown-content ul li {
-            padding: 10px;
-        }
-
-        .dropdown-content ul li a {
-            text-decoration: none;
-            color: #333;
-
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-    </style>
-
-    <style>
-        .button-container {
-            display: flex;
-            margin-top: 20px;
-        }
-
-        .nav-button {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            background-color: #c4c3c354;
-            color: rgba(116, 116, 116, 0.685);
-            cursor: pointer;
-            text-align: center;
-            cursor: pointer;
-            text-align: center;
-            font-size: 10px;
-            border-radius: 10px;
-            /* Borde redondeado */
-            margin: 0 5px;
-        }
-
-        .nav-button:not(:last-child) {
-            border-right: 1px solid #cfcfcf;
-        }
-
-        .nav-button:hover {
-            background-color: #85858554;
-        }
-    </style>
-
-    <style>
-        /* Estilos generales para el footer */
-        .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: #8e76c4;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 10px 0;
-            display: none;
-            /* Oculto por defecto */
-        }
-
-        .footer div {
-            text-align: center;
-            color: white;
-        }
-
-        .footer div a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .footer div .icon {
-            font-size: 24px;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .footer div.cart {
-            background-color: #674ea7;
-            border-radius: 50%;
-            padding: 15px;
-            margin-top: -20px;
-        }
-
-        .footer div.cart .icon {
-            font-size: 28px;
-        }
-
-        /* Media query para pantallas menores a 1000px */
-        @media (max-width: 1000px) {
-            .footer {
-                display: flex;
-                /* Mostrar footer en pantallas menores a 1000px */
-            }
-        }
-    </style>
-
-    <style>
         .grid-large {
             display: flex;
             justify-content: center;
             align-items: center;
+            
         }
 
         .large-image {
@@ -416,7 +179,7 @@
             justify-content: space-around;
             flex-wrap: wrap;
             width: 100%;
-            background-color: #dbdbdbad;
+            background-color:#F8E9D2;
             border-radius: 25px;
             margin-left: 1%;
         }
@@ -500,375 +263,6 @@
         document.querySelector('#toggle-animation').addEventListener('click', classToggle);
     </script>
 
-</head>
-<script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous"
-    defer></script>
-<link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet"
-    crossorigin="anonymous">
-
-<body>
-
-
-
-
-    <div class="slider-container" style="margin-right:10%; margin-left:12%; margin-top: 1%;">
-        <div class="slider">
-            <div class="slides">
-                <a href="https://www.example.com/link1" target="_blank"><img src="web/bg1.png" alt="Imagen 1"></a>
-                <a href="https://www.example.com/link2" target="_blank"><img src="web/bg2.png" alt="Imagen 2"></a>
-                <a href="https://www.example.com/link3" target="_blank"><img src="web/bg3.png" alt="Imagen 3"></a>
-            </div>
-            <button class="prev">&#10094;</button>
-            <button class="next">&#10095;</button>
-        </div>
-    </div>
-
-    <script>
-        const slides = document.querySelector('.slides');
-        const prevBtn = document.querySelector('.prev');
-        const nextBtn = document.querySelector('.next');
-        let index = 0;
-        const slideCount = slides.children.length;
-
-        function showSlide(i) {
-            index = (i + slideCount) % slideCount;
-            slides.style.transform = `translateX(${-index * 100}%)`;
-        }
-
-        function nextSlide() {
-            showSlide(index + 1);
-        }
-
-        function prevSlide() {
-            showSlide(index - 1);
-        }
-
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
-
-        setInterval(nextSlide, 3000); // Cambia la imagen cada 3 segundos
-
-    </script>
-
-    
-    <main style=" margin-right:10%; margin-left:12%; margin-top: 1%;">
-
-        <div class="button-container">
-            <button class="nav-button">Botón 1</button>
-            <button class="nav-button">Botón 2</button>
-            <button class="nav-button">Botón 3</button>
-            <button class="nav-button">Botón 4</button>
-        </div>
-        <div class="center-div" style="margin: 5%;">
-            <label for="" style="font-size: 32px;; color:#575454dc;"> <strong>Encontre tudo o que seu bicho precisa
-                    aqui!</strong></label>
-        </div>
-        <div class="grid-prod">
-            <!-- Grid for the large image -->
-            <div class="grid-large">
-                <div class="large-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/3bbf7a37-bf1b-45e5-abb5-ada61081c7b9___8a5a3abbb07344e55f1ceffe52d1ce5f.png"
-                        alt="Cachorros">
-                </div>
-            </div>
-
-            <div class="grid-small">
-                <div class="circular-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/52b37c62-8bc0-4fec-949f-b3cce4a7439b___5ee2fd8cb4bcc57358325860678bc564.png"
-                        alt="Rações secas">
-                    <p>Rações <br> secas</p>
-                </div>
-                <div class="circular-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/3cdb5651-37d6-4c56-9e83-e4b7fd852a28___220f8fda8b30479bc8647c92409b8fd4.png"
-                        alt="Antipulgas">
-                    <p>Antipulgas</p>
-                </div>
-                <div class="circular-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/8133e893-4ab0-4cbf-af51-f480e1fa33db___b3f31603bcd2d51ab2b4860dfd928d7a.png"
-                        alt="Medicamentos">
-                    <p>Medicamentos</p>
-                </div>
-                <div class="circular-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/e2f89f7c-02bb-4e1d-bba8-dbf56cdfb82d___6d9a74fbda1e2a586f3aa6a43ddfca99.png"
-                        alt="Tapetes higienicos">
-                    <p>Tapetes <br> higienicos</p>
-                </div>
-                <div class="circular-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/73490a8c-bae3-40a3-9656-419921705cac___b02fd0dfc0d9bd69827345c1ea99718c.png"
-                        alt="Rações umidas">
-                    <p>Rações <br> umidas</p>
-                </div>
-                <div class="circular-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/edc80b37-4e9c-46cd-aec9-661dd0162522___20d19a69fb90e7ad5bed72a0b5111711.png"
-                        alt="Brinquedos">
-                    <p>Brinquedos</p>
-                </div>
-            </div>
-        </div>
-        <div class="grid-prod mt-4">
-            <!-- Grid for the large image -->
-            <div class="grid-large">
-                <div class="large-image">
-                    <img src="web/gato.png" alt="Gatos">
-                </div>
-            </div>
-
-            <div class="grid-small">
-                <div class="circular-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/52b37c62-8bc0-4fec-949f-b3cce4a7439b___5ee2fd8cb4bcc57358325860678bc564.png"
-                        alt="Rações secas">
-                    <p>Rações <br> secas</p>
-                </div>
-                <div class="circular-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/3cdb5651-37d6-4c56-9e83-e4b7fd852a28___220f8fda8b30479bc8647c92409b8fd4.png"
-                        alt="Antipulgas">
-                    <p>Antipulgas</p>
-                </div>
-                <div class="circular-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/8133e893-4ab0-4cbf-af51-f480e1fa33db___b3f31603bcd2d51ab2b4860dfd928d7a.png"
-                        alt="Medicamentos">
-                    <p>Medicamentos</p>
-                </div>
-                <div class="circular-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/e2f89f7c-02bb-4e1d-bba8-dbf56cdfb82d___6d9a74fbda1e2a586f3aa6a43ddfca99.png"
-                        alt="Tapetes higienicos">
-                    <p>Tapetes <br> higienicos</p>
-                </div>
-                <div class="circular-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/73490a8c-bae3-40a3-9656-419921705cac___b02fd0dfc0d9bd69827345c1ea99718c.png"
-                        alt="Rações umidas">
-                    <p>Rações <br> umidas</p>
-                </div>
-                <div class="circular-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/edc80b37-4e9c-46cd-aec9-661dd0162522___20d19a69fb90e7ad5bed72a0b5111711.png"
-                        alt="Brinquedos">
-                    <p>Brinquedos</p>
-                </div>
-            </div>
-        </div>
-        <div class="" style="margin:5% 0% 0% 0%;">
-            <label for="" style="font-size: 32px; color:#575454dc;"> <strong>Os favoritos dos bichos</strong></label>
-        </div>
-        <div class="carousel">
-            <button class="carousel-btn prev-btn">&lt;</button>
-            <div class="cards-container" style="margin:5%;">
-
-                <div class="card-c custom-card"> <img style="max-height: 250px;" src="prod/1.png" alt="">
-
-                    <h5 class="card-title">PRODUCTO</h5>
-                    <h5 class="card-title"><strong>PRECIO: 500BS</strong></h5>
-                    <p class="card-text">DESCRIPCION DEL PRODUCTO</p>
-                    <a href="extra.html" class="btn btn-success" style="width: 100%;">COMPRAR</a>
-
-                </div>
-                <div class="card-c custom-card"> <img style="max-height: 250px;" src="prod/1.png" alt="">
-
-                    <h5 class="card-title">PRODUCTO</h5>
-                    <h5 class="card-title"><strong>PRECIO: 500BS</strong></h5>
-                    <p class="card-text">DESCRIPCION DEL PRODUCTO</p>
-                    <a href="extra.html" class="btn btn-success" style="width: 100%;">COMPRAR</a>
-
-                </div>
-                <div class="card-c custom-card"> <img style="max-height: 250px;" src="prod/1.png" alt="">
-
-                    <h5 class="card-title">PRODUCTO</h5>
-                    <h5 class="card-title"><strong>PRECIO: 500BS</strong></h5>
-                    <p class="card-text">DESCRIPCION DEL PRODUCTO</p>
-                    <a href="extra.html" class="btn btn-success" style="width: 100%;">COMPRAR</a>
-
-                </div>
-                <div class="card-c custom-card"> <img style="max-height: 250px;" src="prod/1.png" alt="">
-
-                    <h5 class="card-title">PRODUCTO</h5>
-                    <h5 class="card-title"><strong>PRECIO: 500BS</strong></h5>
-                    <p class="card-text">DESCRIPCION DEL PRODUCTO</p>
-                    <a href="extra.html" class="btn btn-success" style="width: 100%;">COMPRAR</a>
-
-                </div>
-                <div class="card-c custom-card"> <img style="max-height: 250px;" src="prod/1.png" alt="">
-
-                    <h5 class="card-title">PRODUCTO</h5>
-                    <h5 class="card-title"><strong>PRECIO: 500BS</strong></h5>
-                    <p class="card-text">DESCRIPCION DEL PRODUCTO</p>
-                    <a href="extra.html" class="btn btn-success" style="width: 100%;">COMPRAR</a>
-
-                </div>
-            </div>
-            <button class="carousel-btn next-btn">&gt;</button>
-        </div>
-        <div style="display: flex;">
-            <div class="" style="flex:1; justify-content:center;">
-                <div class="">
-                    <img style="width: 100%;" src="ini/1port.png" alt="">
-                </div>
-            </div>
-            <div class="" style="margin-left:1%; width: 50%; flex:1; justify-content:center;">
-                <div class="" style="margin-left:1%; width: 100%; flex:1; justify-content:center;">
-                    <div class="">
-                        <img style="width: 100%;" src="web/barra2.png" alt="">
-                    </div>
-                   
-
-                </div>
-                <div class="" style="flex:1; justify-content:center; display: flex; margin-top: 10%;">
-                    <div class="">
-                        <img style="width: 110%;" src="web/barra3.png" alt="">
-                    </div>
-                    <div class="" style="margin-left: 0%;">
-                        <img style="width: 110%; " src="web/barra4.png" alt="">
-                    </div>
-
-                </div>
-                
-            </div>
-        </div>
-      
-        </div>
-        <div class="" style="margin:5% 0% 5% 0%;">
-            <label for="" style="font-size: 32px; color:#575454dc;"> <strong>Kits promocionais: compre mais por
-                    menos</strong></label>
-        </div>
-        <div class="carousel">
-            <button class="carousel-btn prev-btn">&lt;</button>
-            <div class="cards-container" style="margin:5%;">
-
-                <div class="card-c custom-card"> <img style="max-height: 250px;" src="prod/1.png" alt="">
-
-                    <h5 class="card-title">PRODUCTO</h5>
-                    <h5 class="card-title"><strong>PRECIO: 500BS</strong></h5>
-                    <p class="card-text">DESCRIPCION DEL PRODUCTO</p>
-                    <a href="extra.html" class="btn btn-success" style="width: 100%;">COMPRAR</a>
-
-                </div>
-                <div class="card-c custom-card"> <img style="max-height: 250px;" src="prod/1.png" alt="">
-
-                    <h5 class="card-title">PRODUCTO</h5>
-                    <h5 class="card-title"><strong>PRECIO: 500BS</strong></h5>
-                    <p class="card-text">DESCRIPCION DEL PRODUCTO</p>
-                    <a href="extra.html" class="btn btn-success" style="width: 100%;">COMPRAR</a>
-
-                </div>
-                <div class="card-c custom-card"> <img style="max-height: 250px;" src="prod/1.png" alt="">
-
-                    <h5 class="card-title">PRODUCTO</h5>
-                    <h5 class="card-title"><strong>PRECIO: 500BS</strong></h5>
-                    <p class="card-text">DESCRIPCION DEL PRODUCTO</p>
-                    <a href="extra.html" class="btn btn-success" style="width: 100%;">COMPRAR</a>
-
-                </div>
-                <div class="card-c custom-card"> <img style="max-height: 250px;" src="prod/1.png" alt="">
-
-                    <h5 class="card-title">PRODUCTO</h5>
-                    <h5 class="card-title"><strong>PRECIO: 500BS</strong></h5>
-                    <p class="card-text">DESCRIPCION DEL PRODUCTO</p>
-                    <a href="extra.html" class="btn btn-success" style="width: 100%;">COMPRAR</a>
-
-                </div>
-                <div class="card-c custom-card"> <img style="max-height: 250px;" src="prod/1.png" alt="">
-
-                    <h5 class="card-title">PRODUCTO</h5>
-                    <h5 class="card-title"><strong>PRECIO: 500BS</strong></h5>
-                    <p class="card-text">DESCRIPCION DEL PRODUCTO</p>
-                    <a href="extra.html" class="btn btn-success" style="width: 100%;">COMPRAR</a>
-
-                </div>
-            </div>
-            <button class="carousel-btn next-btn">&gt;</button>
-        </div>
-        <div style="display: flex;">
-            <div class="" style="flex:1; width: 50%; justify-content:center;">
-                <div class="">
-                    <img style="width: 100%;" src="web/abajo2.png" alt="">
-                </div>
-            </div>
-            <div class="" style="margin-left:1%; width: 50%; flex:1; justify-content:center;">
-                <div class="">
-                    <img style="width: 100%;" src="web/abajo2.png" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="center-div" style="margin-top:10%; margin-bottom: 25%;">
-            <img style="width: 100%;" src="web/blog.png" alt="">
-        </div>
-
-        <script>
-            const prevBtn = document.querySelector('.prev-btn');
-            const nextBtn = document.querySelector('.next-btn');
-            const cardsContainer = document.querySelector('.cards-container');
-            const cardWidth = document.querySelector('.card').offsetWidth;
-            let scrollPos = 0;
-
-            prevBtn.addEventListener('click', () => {
-                scrollPos = Math.max(scrollPos - cardWidth, 0);
-                cardsContainer.style.transform = `translateX(${-scrollPos}px)`;
-            });
-
-            nextBtn.addEventListener('click', () => {
-                scrollPos = Math.min(scrollPos + cardWidth, cardsContainer.scrollWidth - cardsContainer.offsetWidth);
-                cardsContainer.style.transform = `translateX(${-scrollPos}px)`;
-            });
-        </script>
-    </main>
-
-
-    <div class="footer">
-        <div class="menu">
-            <span class="icon">&#9776;</span>
-            <a href="extra.html">Menu</a>
-        </div>
-        <div class="login">
-            <span class="icon">&#128100;</span>
-            <a href="extra.html">Iniciar</a>
-        </div>
-        <div class="cart-ini">
-            <span class="icon">&#128722;</span>
-        </div>
-        <div class="address">
-            <span class="icon">&#128205;</span>
-            <a href="extra.html">Endereços</a>
-        </div>
-        <div class="breeds">
-            <span class="icon">&#128021;</span>
-            <a href="extra.html">Raças</a>
-        </div>
-    </div>
-
-    
-
-</body>
-
-</html>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Megapet</title>
-
-  <!--
-    - favicon
-  -->
-  <link rel="shortcut icon" href="./assets/images/logo/logo.png" type="image/x-icon">
-
-  <!--
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style-prefix.css">
-  <!-- <link rel="stylesheet" href="./assets/css/css.css"> -->
-  <!--
-    - google font link
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-
-</head>
 <body>
 
 
@@ -877,46 +271,30 @@
   <!--
     - MODAL
   -->
-
-  <div class="modal" data-modal>
-
-    <div class="modal-close-overlay" data-modal-overlay></div>
-
-    <div class="modal-content">
-
-      <button class="modal-close-btn" data-modal-close>
-        <ion-icon name="close-outline"></ion-icon>
-      </button>
-
-      <!-- <div class="newsletter-img">
-        <img src="./assets/images/newsletter.png" alt="subscribe newsletter" width="400" height="400">
-      </div> -->
-
-      <!-- <div class="newsletter">
-
-        <form action="#">
-
-          <div class="newsletter-header">
-
-            <h3 class="newsletter-title">Subscribe Newsletter.</h3>
-
-            <p class="newsletter-desc">
-              Subscribe the <b>Anon</b> to get latest products and discount update.
-            </p>
-
-          </div>
-
-          <input type="email" name="email" class="email-field" placeholder="Email Address" required>
-
-          <button type="submit" class="btn-newsletter">Subscribe</button>
-
-        </form>
-
-      </div> -->
-
+ <!-- <div class="modal" data-modal></div> -->
+<div class="modal" data-modal>
+  <div class="modal-close-overlay" data-modal-overlay></div>
+  <div class="modal-content">
+    <button class="modal-close-btn" data-modal-close>
+      <ion-icon name="close-outline"></ion-icon>
+    </button>
+    <div class="newsletter-img">
+      <img src="./assets/images/brand-4.jpg" alt="Suscríbete al boletín" width="400" height="400">
     </div>
-
+    <div class="newsletter">
+      <form action="#">
+        <div class="newsletter-header">
+          <h3 class="newsletter-title">Suscríbete a Nuestro Boletín</h3>
+          <p class="newsletter-desc">
+            Suscríbete a <b>Nuestra Clínica Veterinaria</b> para recibir las últimas novedades y descuentos en productos para tus mascotas.
+          </p>
+        </div>
+        <input type="email" name="email" class="email-field" placeholder="Correo Electrónico" required>
+        <button type="submit" class="btn-newsletter">Suscribirse</button>
+      </form>
+    </div>
   </div>
+</div>
 
 
 
@@ -926,33 +304,26 @@
     - NOTIFICATION TOAST
   -->
 
-  <div class="notification-toast" data-toast>
+<div class="notification-toast" data-toast>
+  <button class="toast-close-btn" data-toast-close>
+    <ion-icon name="close-outline"></ion-icon>
+  </button>
+  <div class="toast-banner">
+    <img src="./assets/images/products/category-4.jpg" alt="Descripción de la comida para mascotas" width="80" height="70">
+  </div>
+  <div class="toast-detail">
+    <p class="toast-message">
+      ¡Nuevo producto disponible!
+    </p>
+    <p class="toast-title">
+      Comida Premium para Mascotas
+    </p>
+    <p class="toast-meta">
+      <time datetime="PT2M">hace 2 minutos</time>
+    </p>
+  </div>
+</div>
 
-    <button class="toast-close-btn" data-toast-close>
-      <ion-icon name="close-outline"></ion-icon>
-    </button>
-
-    <div class="toast-banner">
-      <img src="./assets/images/products/1.jpg" alt="descripcion de la comida" width="80" height="70">
-    </div>
-
-    <div class="toast-detail">
-
-      <p class="toast-message">
-        Comida
-      </p>
-
-      <p class="toast-title">
-        descripcion de la comida
-      </p>
-
-      <p class="toast-meta">
-        <time datetime="PT2M">2 Minutes</time> ago
-      </p>
-
-    </div>
-
-  </div> 
 
 
 
@@ -963,123 +334,80 @@
   -->
 
   <header>
-
     <div class="header-top">
-
-      <div class="container">
-
+      <div class="container advertising">
         <ul class="header-social-container">
-
           <li>
             <a href="#" class="social-link">
               <ion-icon name="logo-facebook"></ion-icon>
             </a>
           </li>
-
           <li>
             <a href="#" class="social-link">
               <ion-icon name="logo-twitter"></ion-icon>
             </a>
           </li>
-
           <li>
             <a href="#" class="social-link">
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
           </li>
-
           <li>
             <a href="#" class="social-link">
               <ion-icon name="logo-linkedin"></ion-icon>
             </a>
           </li>
-
         </ul>
 
-        <div class="header-alert-news">
-          <p>
-            <b>Ganhe 12% OFF nas compras </b>
-            acima de R$269 com o cupom MAECUIDA
-          </p> 
+        <div class="header-alert-news" style="background-color: #e91022; color: white; padding: 10px;">
+          <p><b>Obtén 12% de descuento en compras</b> superiores a Bs 269 con el cupón MAECUIDA</p>
         </div>
 
         <div class="header-top-actions">
-
           <select name="currency">
-
             <option value="usd">USD &dollar;</option>
             <option value="eur">EUR &euro;</option>
-
           </select>
-
           <select name="language">
-
             <option value="en-US">English</option>
             <option value="es-ES">Espa&ntilde;ol</option>
             <option value="fr">Fran&ccedil;ais</option>
-
           </select>
-
         </div>
-
       </div>
-
     </div>
 
     <div class="header-main">
-
       <div class="container">
-
         <a href="#" class="header-logo">
           <img src="./assets/images/logo/logo.png" alt="Megapet" width="90" height="50">
         </a>
-
-          <!-- se añadio -->
-                        <div class="search">
-                    <input type="text" placeholder="Busque lo que necesite ... "
-                        style="padding: 15px; width: 100%; padding: 5px; background-color: #adadad67; border-radius: 15px; border: 1px solid #cccccc70;">
-                </div>
-
-                <!-- se añadio -->
-        <div class="header-search-container">
-
-          <input type="search" name="search" class="search-field" placeholder="Enter your product name...">
-
-          
+        <div class="header-search-container" >
+          <input style="width: 100%; border-radius: 10px;" type="search" 
+          name="search" class="search-field" placeholder="Buscar producto.....">
           <button class="search-btn">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-
         </div>
-
         <div class="header-user-actions">
-
           <button class="action-btn">
             <ion-icon name="person-outline"></ion-icon>
           </button>
-
           <button class="action-btn">
             <ion-icon name="heart-outline"></ion-icon>
             <span class="count">0</span>
           </button>
-
           <button class="action-btn">
             <ion-icon name="bag-handle-outline"></ion-icon>
             <span class="count">0</span>
           </button>
-
         </div>
-
       </div>
-
     </div>
 
     <nav class="desktop-navigation-menu">
-
       <div class="container">
-
         <ul class="desktop-menu-category-list">
-
           <li class="menu-category">
             <a href="#" class="menu-title">Home</a>
           </li>
@@ -1113,12 +441,6 @@
         <a href="#">Dietas Especiales</a>
       </li>
 
-      <li class="panel-list-item">
-        <a href="#">
-          <img src="./assets/images/food-banner.jpg" alt="comida para cachorros" width="250" height="119">
-        </a>
-      </li>
-
     </ul>
 
     <ul class="dropdown-panel-list">
@@ -1141,12 +463,6 @@
 
       <li class="panel-list-item">
         <a href="#">Interactivos</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">
-          <img src="./assets/images/toys-banner.jpg" alt="juguetes para cachorros" width="250" height="119">
-        </a>
       </li>
 
     </ul>
@@ -1173,12 +489,6 @@
         <a href="#">Antipulgas</a>
       </li>
 
-      <li class="panel-list-item">
-        <a href="#">
-          <img src="./assets/images/care-banner.jpg" alt="cuidado de cachorros" width="250" height="119">
-        </a>
-      </li>
-
     </ul>
 
     <ul class="dropdown-panel-list">
@@ -1201,12 +511,6 @@
 
       <li class="panel-list-item">
         <a href="#">Ropa</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">
-          <img src="./assets/images/accessories-banner.jpg" alt="accesorios para cachorros" width="250" height="119">
-        </a>
       </li>
 
     </ul>
@@ -1655,77 +959,105 @@
       - BANNER
     -->
 
-<div class="banner">
+ <!-- <div class="banner">
 
   <div class="container">
-
+    
     <div class="slider-container has-scrollbar">
 
       <div class="slider-item">
-
-        <img src="./assets/images/banner-1.jpg" alt="food sale for pets" class="banner-img">
-
-        <div class="banner-content">
-
-          <p class="banner-subtitle">Productos en tendencia</p>
-
-          <h2 class="banner-title">Venta de comida para mascotas</h2>
-
-          <p class="banner-text">
-            desde &dollar; <b>10</b>.00
-          </p>
-
-          <a href="#" class="banner-btn">Comprar ahora</a>
-
-        </div>
-
-      </div>
-
-      <div class="slider-item">
-
         <img src="./assets/images/banner-2.jpg" alt="accessories for pets" class="banner-img">
-
         <div class="banner-content">
-
           <p class="banner-subtitle">Accesorios de moda</p>
-
           <h2 class="banner-title">Accesorios modernos para mascotas</h2>
-
           <p class="banner-text">
             desde &dollar; <b>5</b>.00
           </p>
-
           <a href="#" class="banner-btn">Comprar ahora</a>
-
         </div>
-
       </div>
 
       <div class="slider-item">
-
-        <img src="./assets/images/banner-3.jpg" alt="health products for pets" class="banner-img">
-
+        <img src="./assets/images/banner-1.jpg" alt="food sale for pets" class="banner-img">
         <div class="banner-content">
+          <p class="banner-subtitle">Productos en tendencia</p>
+          <h2 class="banner-title">Venta de comida para mascotas</h2>
+          <p class="banner-text">
+            desde &dollar; <b>10</b>.00
+          </p>
+          <a href="#" class="banner-btn">Comprar ahora</a>
+        </div>
+      </div>
 
+      <div class="slider-item">
+        <img src="./assets/images/banner-3.jpg" alt="health products for pets" class="banner-img">
+        <div class="banner-content">
           <p class="banner-subtitle">Ofertas especiales</p>
-
           <h2 class="banner-title">Productos de salud para mascotas</h2>
-
           <p class="banner-text">
             desde &dollar; <b>19</b>.99
           </p>
-
           <a href="#" class="banner-btn">Comprar ahora</a>
-
         </div>
-
       </div>
 
-    </div>
 
+
+
+    </div>
   </div>
 
-</div>
+</div> -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const slides = document.querySelector('.slider');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let index = 0;
+        const slideCount = slides.children.length;
+
+        function showSlide(i) {
+            index = (i + slideCount) % slideCount;
+            slides.style.transform = `translateX(${-index * 100}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(index + 1);
+        }
+
+        function prevSlide() {
+            showSlide(index - 1);
+        }
+
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        setInterval(nextSlide, 3000); // Cambia la imagen cada 3 segundos
+    });
+</script>
+
+
+    <!-- se añadio --> 
+    <div class="slider-container" style="margin-right:10%; margin-left:12%; margin-top: 1%;">
+        <div class="slider">
+            <div class="slides">
+                <a href="/" target="_blank"><img src="assets/images/banner/bg1.png" alt="Imagen 1"></a>
+                <a href="/" target="_blank"><img src="assets/images/banner/bg2.png" alt="Imagen 2"></a>
+                <a href="/" target="_blank"><img src="assets/images/banner/bg3.png" alt="Imagen 3"></a>
+            </div>
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </div>
+    </div>
+
+
+    
+
+
+    <!-- se añadio -->
+
+
 
 
 
@@ -2201,8 +1533,8 @@
           <a href="#" class="showcase-category">Alimento para perros</a>
 
           <div class="price-box">
-            <p class="price">$12.99</p>
-            <del>$15.99</del>
+            <p class="price">Bs.12.99</p>
+            <del>Bs. 15.99</del>
           </div>
 
         </div>
@@ -2224,8 +1556,8 @@
           <a href="#" class="showcase-category">Alimento para gatos</a>
 
           <div class="price-box">
-            <p class="price">$10.99</p>
-            <del>$13.99</del>
+            <p class="price">Bs.10.99</p>
+            <del>Bs.13.99</del>
           </div>
 
         </div>
@@ -2247,8 +1579,8 @@
           <a href="#" class="showcase-category">Cuidado de mascotas</a>
 
           <div class="price-box">
-            <p class="price">$19.99</p>
-            <del>$24.99</del>
+            <p class="price">Bs.19.99</p>
+            <del>Bs.24.99</del>
           </div>
 
         </div>
@@ -2270,8 +1602,8 @@
           <a href="#" class="showcase-category">Cuidado bucal</a>
 
           <div class="price-box">
-            <p class="price">$15.99</p>
-            <del>$19.99</del>
+            <p class="price">Bs.15.99</p>
+            <del>Bs.19.99</del>
           </div>
 
         </div>
@@ -2291,65 +1623,6 @@
 
 
         <div class="product-box">
-
-          <!--
-            - PRODUCT MINIMAL
-          -->
-
-<section class="section offer" aria-label="oferta">
-  <div class="container">
-
-    <ul class="grid-list">
-
-      <li>
-        <div class="offer-card has-bg-image img-holder"
-          style="background-image: url('./assets/images/offer-banner-1.jpg'); --width: 540; --height: 374;">
-
-          <p class="card-subtitle">Artículos seleccionados. Solo en línea.</p>
-
-          <h3 class="h3 card-title">
-            Ofertas de <span class="span">Verano</span>
-          </h3>
-
-          <a href="#" class="btn">Leer Más</a>
-
-        </div>
-      </li>
-
-      <li>
-        <div class="offer-card has-bg-image img-holder"
-          style="background-image: url('./assets/images/offer-banner-2.jpg'); --width: 540; --height: 374;">
-
-          <p class="card-subtitle">Premios y Aseo</p>
-
-          <h3 class="h3 card-title">
-            Mima a tu verdadero <span class="span">amor</span>
-          </h3>
-
-          <a href="#" class="btn">Leer Más</a>
-
-        </div>
-      </li>
-
-      <li>
-        <div class="offer-card has-bg-image img-holder"
-          style="background-image: url('./assets/images/offer-banner-3.jpg'); --width: 540; --height: 374;">
-
-          <p class="card-subtitle">Nuestra Marca que te Encantará</p>
-
-          <h3 class="h3 card-title">
-            Novedades de este <span class="span">año</span>
-          </h3>
-
-          <a href="#" class="btn">Leer Más</a>
-
-        </div>
-      </li>
-
-    </ul>
-
-  </div>
-</section>
 
 
 
@@ -2379,8 +1652,8 @@
                       <a href="#" class="showcase-category">Clothes</a>
 
                       <div class="price-box">
-                        <p class="price">$45.00</p>
-                        <del>$12.00</del>
+                        <p class="price">Bs.45.00</p>
+                        <del>Bs.12.00</del>
                       </div>
 
                     </div>
@@ -2402,8 +1675,8 @@
                       <a href="#" class="showcase-category">Clothes</a>
                   
                       <div class="price-box">
-                        <p class="price">$61.00</p>
-                        <del>$9.00</del>
+                        <p class="price">Bs.61.00</p>
+                        <del>Bs.9.00</del>
                       </div>
                   
                     </div>
@@ -2426,8 +1699,8 @@
                       <a href="#" class="showcase-category">Clothes</a>
                   
                       <div class="price-box">
-                        <p class="price">$76.00</p>
-                        <del>$25.00</del>
+                        <p class="price">Bs.76.00</p>
+                        <del>Bs.25.00</del>
                       </div>
                   
                     </div>
@@ -2450,8 +1723,8 @@
                       <a href="#" class="showcase-category">Mens Fashion</a>
                   
                       <div class="price-box">
-                        <p class="price">$68.00</p>
-                        <del>$31.00</del>
+                        <p class="price">Bs.68.00</p>
+                        <del>Bs.31.00</del>
                       </div>
                   
                     </div>
@@ -2478,8 +1751,8 @@
                       <a href="#" class="showcase-category">Winter wear</a>
                 
                       <div class="price-box">
-                        <p class="price">$61.00</p>
-                        <del>$11.00</del>
+                        <p class="price">Bs.61.00</p>
+                        <del>Bs.11.00</del>
                       </div>
                 
                     </div>
@@ -2502,8 +1775,8 @@
                       <a href="#" class="showcase-category">Winter wear</a>
                 
                       <div class="price-box">
-                        <p class="price">$32.00</p>
-                        <del>$20.00</del>
+                        <p class="price">Bs.32.00</p>
+                        <del>Bs.20.00</del>
                       </div>
                 
                     </div>
@@ -2526,8 +1799,8 @@
                       <a href="#" class="showcase-category">Jackets</a>
                 
                       <div class="price-box">
-                        <p class="price">$50.00</p>
-                        <del>$25.00</del>
+                        <p class="price">Bs.50.00</p>
+                        <del>Bs.25.00</del>
                       </div>
                 
                     </div>
@@ -2550,8 +1823,8 @@
                       <a href="#" class="showcase-category">Shorts</a>
                 
                       <div class="price-box">
-                        <p class="price">$20.00</p>
-                        <del>$10.00</del>
+                        <p class="price">Bs.20.00</p>
+                        <del>Bs.10.00</del>
                       </div>
                 
                     </div>
@@ -2588,8 +1861,8 @@
                       <a href="#" class="showcase-category">Sports</a>
             
                       <div class="price-box">
-                        <p class="price">$49.00</p>
-                        <del>$15.00</del>
+                        <p class="price">Bs.49.00</p>
+                        <del>Bs.15.00</del>
                       </div>
             
                     </div>
@@ -2612,8 +1885,8 @@
                       <a href="#" class="showcase-category">Sports</a>
             
                       <div class="price-box">
-                        <p class="price">$78.00</p>
-                        <del>$36.00</del>
+                        <p class="price">Bs.78.00</p>
+                        <del>Bs.36.00</del>
                       </div>
             
                     </div>
@@ -2636,8 +1909,8 @@
                       <a href="#" class="showcase-category">Party wear</a>
             
                       <div class="price-box">
-                        <p class="price">$94.00</p>
-                        <del>$42.00</del>
+                        <p class="price">Bs.94.00</p>
+                        <del>Bs.42.00</del>
                       </div>
             
                     </div>
@@ -2660,8 +1933,8 @@
                       <a href="#" class="showcase-category">Sports</a>
             
                       <div class="price-box">
-                        <p class="price">$54.00</p>
-                        <del>$65.00</del>
+                        <p class="price">Bs.54.00</p>
+                        <del>Bs.65.00</del>
                       </div>
             
                     </div>
@@ -2688,8 +1961,8 @@
                       <a href="#" class="showcase-category">Sports</a>
             
                       <div class="price-box">
-                        <p class="price">$52.00</p>
-                        <del>$55.00</del>
+                        <p class="price">Bs.52.00</p>
+                        <del>Bs.55.00</del>
                       </div>
             
                     </div>
@@ -2711,8 +1984,8 @@
                       <a href="#" class="showcase-category">boots</a>
             
                       <div class="price-box">
-                        <p class="price">$20.00</p>
-                        <del>$30.00</del>
+                        <p class="price">Bs.20.00</p>
+                        <del>Bs.30.00</del>
                       </div>
             
                     </div>
@@ -2735,8 +2008,8 @@
                       <a href="#" class="showcase-category">formal</a>
             
                       <div class="price-box">
-                        <p class="price">$56.00</p>
-                        <del>$78.00</del>
+                        <p class="price">Bs.56.00</p>
+                        <del>Bs.78.00</del>
                       </div>
             
                     </div>
@@ -2758,8 +2031,8 @@
                       <a href="#" class="showcase-category">Casual</a>
             
                       <div class="price-box">
-                        <p class="price">$50.00</p>
-                        <del>$55.00</del>
+                        <p class="price">Bs.50.00</p>
+                        <del>Bs.55.00</del>
                       </div>
             
                     </div>
@@ -2796,8 +2069,8 @@
                       <a href="#" class="showcase-category">Watches</a>
             
                       <div class="price-box">
-                        <p class="price">$50.00</p>
-                        <del>$34.00</del>
+                        <p class="price">Bs.50.00</p>
+                        <del>Bs.34.00</del>
                       </div>
             
                     </div>
@@ -2820,8 +2093,8 @@
                       <a href="#" class="showcase-category">Jewellery</a>
             
                       <div class="price-box">
-                        <p class="price">$84.00</p>
-                        <del>$30.00</del>
+                        <p class="price">Bs.84.00</p>
+                        <del>Bs.30.00</del>
                       </div>
             
                     </div>
@@ -2844,8 +2117,8 @@
                       <a href="#" class="showcase-category">Perfume</a>
             
                       <div class="price-box">
-                        <p class="price">$42.00</p>
-                        <del>$10.00</del>
+                        <p class="price">Bs.42.00</p>
+                        <del>Bs.10.00</del>
                       </div>
             
                     </div>
@@ -2868,8 +2141,8 @@
                       <a href="#" class="showcase-category">Belt</a>
             
                       <div class="price-box">
-                        <p class="price">$24.00</p>
-                        <del>$10.00</del>
+                        <p class="price">Bs.24.00</p>
+                        <del>Bs.10.00</del>
                       </div>
             
                     </div>
@@ -2896,8 +2169,8 @@
                       <a href="#" class="showcase-category">jewellery</a>
             
                       <div class="price-box">
-                        <p class="price">$62.00</p>
-                        <del>$65.00</del>
+                        <p class="price">Bs.62.00</p>
+                        <del>Bs.65.00</del>
                       </div>
             
                     </div>
@@ -2919,8 +2192,8 @@
                       <a href="#" class="showcase-category">Watches</a>
             
                       <div class="price-box">
-                        <p class="price">$56.00</p>
-                        <del>$78.00</del>
+                        <p class="price">Bs.56.00</p>
+                        <del>Bs.78.00</del>
                       </div>
             
                     </div>
@@ -2943,8 +2216,8 @@
                       <a href="#" class="showcase-category">cosmetics</a>
             
                       <div class="price-box">
-                        <p class="price">$20.00</p>
-                        <del>$30.00</del>
+                        <p class="price">Bs.20.00</p>
+                        <del>Bs.30.00</del>
                       </div>
             
                     </div>
@@ -2967,8 +2240,8 @@
                       <a href="#" class="showcase-category">jewellery</a>
             
                       <div class="price-box">
-                        <p class="price">$20.00</p>
-                        <del>$30.00</del>
+                        <p class="price">Bs.20.00</p>
+                        <del>Bs.30.00</del>
                       </div>
             
                     </div>
@@ -2985,6 +2258,259 @@
 
 
 
+
+
+
+
+          <!--
+            - PRODUCT GRID
+          -->
+          <div class="product-main">
+
+
+<div>
+
+                    <h2 class="h2 section-title">
+            <span class="span">¡Encuentra todo lo que tu mascota </span> necesita aquí!
+          </h2>
+  
+  <div class="grid-prod">
+    <!-- Grid para la imagen grande -->
+    <div class="grid-large" >
+      <div class="large-image">
+        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/3bbf7a37-bf1b-45e5-abb5-ada61081c7b9___8a5a3abbb07344e55f1ceffe52d1ce5f.png" alt="Perros">
+      </div>
+    </div>
+
+    <div class="grid-small">
+      <div class="circular-image">
+        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/52b37c62-8bc0-4fec-949f-b3cce4a7439b___5ee2fd8cb4bcc57358325860678bc564.png" alt="Comida seca">
+        <p>Comida <br> seca</p>
+      </div>
+      <div class="circular-image">
+        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/3cdb5651-37d6-4c56-9e83-e4b7fd852a28___220f8fda8b30479bc8647c92409b8fd4.png" alt="Antipulgas">
+        <p>Antipulgas</p>
+      </div>
+      <div class="circular-image">
+        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/8133e893-4ab0-4cbf-af51-f480e1fa33db___b3f31603bcd2d51ab2b4860dfd928d7a.png" alt="Medicamentos">
+        <p>Medicamentos</p>
+      </div>
+      <div class="circular-image">
+        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/e2f89f7c-02bb-4e1d-bba8-dbf56cdfb82d___6d9a74fbda1e2a586f3aa6a43ddfca99.png" alt="Tapetes higiénicos">
+        <p>Tapetes <br> higiénicos</p>
+      </div>
+      <div class="circular-image">
+        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/73490a8c-bae3-40a3-9656-419921705cac___b02fd0dfc0d9bd69827345c1ea99718c.png" alt="Comida húmeda">
+        <p>Comida <br> húmeda</p>
+      </div>
+      <div class="circular-image">
+        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/edc80b37-4e9c-46cd-aec9-661dd0162522___20d19a69fb90e7ad5bed72a0b5111711.png" alt="Juguetes">
+        <p>Juguetes</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-prod mt-4">
+    <!-- Grid para la imagen grande -->
+    <div class="grid-large">
+      <div class="large-image">
+        <img src="assets/images/gato.png" alt="Gatos">
+      </div>
+    </div>
+
+    <div class="grid-small">
+      <div class="circular-image">
+        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/52b37c62-8bc0-4fec-949f-b3cce4a7439b___5ee2fd8cb4bcc57358325860678bc564.png" alt="Comida seca">
+        <p>Comida <br> seca</p>
+      </div>
+      <div class="circular-image">
+        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/3cdb5651-37d6-4c56-9e83-e4b7fd852a28___220f8fda8b30479bc8647c92409b8fd4.png" alt="Antipulgas">
+        <p>Antipulgas</p>
+      </div>
+      <div class="circular-image">
+        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/8133e893-4ab0-4cbf-af51-f480e1fa33db___b3f31603bcd2d51ab2b4860dfd928d7a.png" alt="Medicamentos">
+        <p>Medicamentos</p>
+      </div>
+      <div class="circular-image">
+        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/e2f89f7c-02bb-4e1d-bba8-dbf56cdfb82d___6d9a74fbda1e2a586f3aa6a43ddfca99.png" alt="Tapetes higiénicos">
+        <p>Tapetes <br> higiénicos</p>
+      </div>
+      <div class="circular-image">
+        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/73490a8c-bae3-40a3-9656-419921705cac___b02fd0dfc0d9bd69827345c1ea99718c.png" alt="Comida húmeda">
+        <p>Comida <br> húmeda</p>
+      </div>
+      <div class="circular-image">
+        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/edc80b37-4e9c-46cd-aec9-661dd0162522___20d19a69fb90e7ad5bed72a0b5111711.png" alt="Juguetes">
+        <p>Juguetes</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      
+
+      <section class="section product" id="shop" aria-label="product">
+
+                  <h2 class="h2 section-title">
+            <span class="span">Os favoritos dos </span> bichos
+          </h2>
+
+<div class="carousel">
+  <button class="carousel-btn prev-btn">&lt;</button>
+  <div class="cards-container" style="margin: 5%;">
+    <div class="card-c custom-card">
+              <div class="product-card">
+
+                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                  <img src="./assets/images/product-1.jpg" width="360" height="360" loading="lazy"
+                    alt="Commodo leo sed porta" class="img-cover default">
+                  <img src="./assets/images/product-1_0.jpg" width="360" height="360" loading="lazy"
+                    alt="Commodo leo sed porta" class="img-cover hover">
+
+                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                  </button>
+                </div>
+
+                <div class="card-content">
+
+                  <div class="wrapper">
+                    <div class="rating-wrapper">
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    </div>
+
+                    <span class="span">(1)</span>
+                  </div>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Commodo leo sed porta</a>
+                  </h3>
+
+                  <data class="card-price" value="15">Bs.15.00</data>
+                  <a href="#" class="banner-btn" style="width: 100%;">Comprar</a>
+                </div>
+              </div>
+
+    </div>
+    <div class="card-c custom-card">
+              <div class="product-card">
+
+                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                  <img src="./assets/images/product-1.jpg" width="360" height="360" loading="lazy"
+                    alt="Commodo leo sed porta" class="img-cover default">
+                  <img src="./assets/images/product-1_0.jpg" width="360" height="360" loading="lazy"
+                    alt="Commodo leo sed porta" class="img-cover hover">
+
+                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                  </button>
+                </div>
+
+                <div class="card-content">
+
+                  <div class="wrapper">
+                    <div class="rating-wrapper">
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    </div>
+
+                    <span class="span">(1)</span>
+                  </div>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Commodo leo sed porta</a>
+                  </h3>
+
+                  <data class="card-price" value="15">Bs.15.00</data>
+                  <a href="#" class="banner-btn" style="width: 100%;">Comprar</a>
+                </div>
+              </div>
+
+    </div>
+    <div class="card-c custom-card">
+              <div class="product-card">
+
+                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                  <img src="./assets/images/product-1.jpg" width="360" height="360" loading="lazy"
+                    alt="Commodo leo sed porta" class="img-cover default">
+                  <img src="./assets/images/product-1_0.jpg" width="360" height="360" loading="lazy"
+                    alt="Commodo leo sed porta" class="img-cover hover">
+
+                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                  </button>
+                </div>
+
+                <div class="card-content">
+
+                  <div class="wrapper">
+                    <div class="rating-wrapper">
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    </div>
+
+                    <span class="span">(1)</span>
+                  </div>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Commodo leo sed porta</a>
+                  </h3>
+
+                  <data class="card-price" value="15">Bs.15.00</data>
+                  <a href="#" class="banner-btn" style="width: 100%;">Comprar</a>
+                </div>
+              </div>
+    </div>
+  </div>
+  <button class="carousel-btn next-btn">&gt;</button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  const cardsContainer = document.querySelector('.cards-container');
+  const cards = document.querySelectorAll('.card-c');
+
+  let index = 0;
+  const cardWidth = cards[0].clientWidth;
+
+  function showSlide(index) {
+    cardsContainer.style.transform = `translateX(${-index * cardWidth}px)`;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    index = (index > 0) ? index - 1 : cards.length - 1;
+    showSlide(index);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    index = (index < cards.length - 1) ? index + 1 : 0;
+    showSlide(index);
+  });
+
+  // Opcional: Cambio automático de slides
+  setInterval(() => {
+    nextBtn.click();
+  }, 3000); // Cambia la imagen cada 3 segundos
+});
+
+</script>
+
+
+
+<br>
           <!--
             - PRODUCT FEATURED
           -->
@@ -3022,8 +2548,8 @@
           </p>
 
           <div class="price-box">
-            <p class="price">$150.00</p>
-            <del>$200.00</del>
+            <p class="price">Bs.150.00</p>
+            <del>Bs.200.00</del>
           </div>
 
           <button class="add-cart-btn">Agregar al carrito</button>
@@ -3107,8 +2633,8 @@
           </p>
     
           <div class="price-box">
-            <p class="price">$199.00</p>
-            <del>$250.00</del>
+            <p class="price">Bs.199.00</p>
+            <del>Bs.250.00</del>
           </div>
     
           <button class="add-cart-btn">Agregar al carrito</button>
@@ -3161,393 +2687,67 @@
 
 </div>
 
-
-
-
+<br>
           <!--
-            - PRODUCT GRID
+            - PRODUCT MINIMAL
           -->
 
+<section class="section offer" aria-label="oferta">
+  <div class="container">
 
-                  <div class="grid-prod">
-            <!-- Grid for the large image -->
-            <div class="grid-large">
-                <div class="large-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/3bbf7a37-bf1b-45e5-abb5-ada61081c7b9___8a5a3abbb07344e55f1ceffe52d1ce5f.png"
-                        alt="Cachorros">
-                </div>
-            </div>
+    <ul class="grid-list">
 
+      <li>
+        <div class="offer-card has-bg-image img-holder"
+          style="background-image: url('./assets/images/offer-banner-1.jpg'); --width: 540; --height: 374;">
 
+          <p class="card-subtitle">Artículos seleccionados. Solo en línea.</p>
 
-            
-        <!-- hola -->
+          <h3 class="h3 card-title">
+            Ofertas de <span class="span">Verano</span>
+          </h3>
 
-            <div class="grid-small">
-                <div class="circular-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/52b37c62-8bc0-4fec-949f-b3cce4a7439b___5ee2fd8cb4bcc57358325860678bc564.png"
-                        alt="Rações secas">
-                    <p>Rações <br> secas</p>
-                </div>
-                <div class="circular-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/3cdb5651-37d6-4c56-9e83-e4b7fd852a28___220f8fda8b30479bc8647c92409b8fd4.png"
-                        alt="Antipulgas">
-                    <p>Antipulgas</p>
-                </div>
-                <div class="circular-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/8133e893-4ab0-4cbf-af51-f480e1fa33db___b3f31603bcd2d51ab2b4860dfd928d7a.png"
-                        alt="Medicamentos">
-                    <p>Medicamentos</p>
-                </div>
-                <div class="circular-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/e2f89f7c-02bb-4e1d-bba8-dbf56cdfb82d___6d9a74fbda1e2a586f3aa6a43ddfca99.png"
-                        alt="Tapetes higienicos">
-                    <p>Tapetes <br> higienicos</p>
-                </div>
-                <div class="circular-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/73490a8c-bae3-40a3-9656-419921705cac___b02fd0dfc0d9bd69827345c1ea99718c.png"
-                        alt="Rações umidas">
-                    <p>Rações <br> umidas</p>
-                </div>
-                <div class="circular-image">
-                    <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/edc80b37-4e9c-46cd-aec9-661dd0162522___20d19a69fb90e7ad5bed72a0b5111711.png"
-                        alt="Brinquedos">
-                    <p>Brinquedos</p>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- hola -->
-
-  
-
-          <div class="product-main">
-
-      <section class="section product" id="shop" aria-label="product">
-        <div class="container">
-
-          <h2 class="h2 section-title">
-            <span class="span">Best</span> Seller
-          </h2>
-
-          <ul class="grid-list">
-
-            <li>
-              <div class="product-card">
-
-                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
-                  <img src="./assets/images/product-1.jpg" width="360" height="360" loading="lazy"
-                    alt="Commodo leo sed porta" class="img-cover default">
-                  <img src="./assets/images/product-1_0.jpg" width="360" height="360" loading="lazy"
-                    alt="Commodo leo sed porta" class="img-cover hover">
-
-                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
-                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
-                  </button>
-                </div>
-
-                <div class="card-content">
-
-                  <div class="wrapper">
-                    <div class="rating-wrapper">
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                    </div>
-
-                    <span class="span">(1)</span>
-                  </div>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Commodo leo sed porta</a>
-                  </h3>
-
-                  <data class="card-price" value="15">$15.00</data>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card">
-
-                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
-                  <img src="./assets/images/product-2.jpg" width="360" height="360" loading="lazy"
-                    alt="Purus consequat congue sit" class="img-cover default">
-                  <img src="./assets/images/product-2_0.jpg" width="360" height="360" loading="lazy"
-                    alt="Purus consequat congue sit" class="img-cover hover">
-
-                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
-                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
-                  </button>
-                </div>
-
-                <div class="card-content">
-
-                  <div class="wrapper">
-                    <div class="rating-wrapper gray">
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                    </div>
-
-                    <span class="span">(0)</span>
-                  </div>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Purus consequat congue sit</a>
-                  </h3>
-
-                  <data class="card-price" value="45">$45.00</data>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card">
-
-                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
-                  <img src="./assets/images/product-3.jpg" width="360" height="360" loading="lazy"
-                    alt="Morbi vel arcu scelerisque" class="img-cover default">
-                  <img src="./assets/images/product-3_0.jpg" width="360" height="360" loading="lazy"
-                    alt="Morbi vel arcu scelerisque" class="img-cover hover">
-
-                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
-                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
-                  </button>
-                </div>
-
-                <div class="card-content">
-
-                  <div class="wrapper">
-                    <div class="rating-wrapper gray">
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                    </div>
-
-                    <span class="span">(0)</span>
-                  </div>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Morbi vel arcu scelerisque</a>
-                  </h3>
-
-                  <data class="card-price" value="45">$45.00</data>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card">
-
-                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
-                  <img src="./assets/images/product-4.jpg" width="360" height="360" loading="lazy"
-                    alt="Morbi vel arcu scelerisque" class="img-cover default">
-                  <img src="./assets/images/product-4_0.jpg" width="360" height="360" loading="lazy"
-                    alt="Morbi vel arcu scelerisque" class="img-cover hover">
-
-                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
-                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
-                  </button>
-                </div>
-
-                <div class="card-content">
-
-                  <div class="wrapper">
-                    <div class="rating-wrapper gray">
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                    </div>
-
-                    <span class="span">(0)</span>
-                  </div>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Morbi vel arcu scelerisque</a>
-                  </h3>
-
-                  <data class="card-price" value="49">$49.00</data>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card">
-
-                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
-                  <img src="./assets/images/product-5.jpg" width="360" height="360" loading="lazy"
-                    alt="Morbi vel arcu scelerisque" class="img-cover default">
-                  <img src="./assets/images/product-5_0.jpg" width="360" height="360" loading="lazy"
-                    alt="Morbi vel arcu scelerisque" class="img-cover hover">
-
-                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
-                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
-                  </button>
-                </div>
-
-                <div class="card-content">
-
-                  <div class="wrapper">
-                    <div class="rating-wrapper gray">
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                    </div>
-
-                    <span class="span">(0)</span>
-                  </div>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Morbi vel arcu scelerisque</a>
-                  </h3>
-
-                  <data class="card-price" value="85">$85.00</data>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card">
-
-                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
-                  <img src="./assets/images/product-6.jpg" width="360" height="360" loading="lazy"
-                    alt="Nam justo libero porta ege" class="img-cover default">
-                  <img src="./assets/images/product-6_0.jpg" width="360" height="360" loading="lazy"
-                    alt="Nam justo libero porta ege" class="img-cover hover">
-
-                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
-                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
-                  </button>
-                </div>
-
-                <div class="card-content">
-
-                  <div class="wrapper">
-                    <div class="rating-wrapper gray">
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                    </div>
-
-                    <span class="span">(0)</span>
-                  </div>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Nam justo libero porta ege</a>
-                  </h3>
-
-                  <data class="card-price" value="85">$85.00</data>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card">
-
-                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
-                  <img src="./assets/images/product-7.jpg" width="360" height="360" loading="lazy"
-                    alt="Nam justo libero porta ege" class="img-cover default">
-                  <img src="./assets/images/product-7_0.jpg" width="360" height="360" loading="lazy"
-                    alt="Nam justo libero porta ege" class="img-cover hover">
-
-                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
-                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
-                  </button>
-                </div>
-
-                <div class="card-content">
-
-                  <div class="wrapper">
-                    <div class="rating-wrapper gray">
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                    </div>
-
-                    <span class="span">(0)</span>
-                  </div>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Nam justo libero porta ege</a>
-                  </h3>
-
-                  <data class="card-price" value="85">$85.00</data>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card">
-
-                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
-                  <img src="./assets/images/product-8.jpg" width="360" height="360" loading="lazy"
-                    alt="Etiam commodo leo sed" class="img-cover default">
-                  <img src="./assets/images/product-8_0.jpg" width="360" height="360" loading="lazy"
-                    alt="Etiam commodo leo sed" class="img-cover hover">
-
-                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
-                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
-                  </button>
-                </div>
-
-                <div class="card-content">
-
-                  <div class="wrapper">
-                    <div class="rating-wrapper gray">
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                    </div>
-
-                    <span class="span">(0)</span>
-                  </div>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Etiam commodo leo sed</a>
-                  </h3>
-
-                  <data class="card-price" value="55">$55.00</data>
-
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
+          <a href="#" class="btn">Leer Más</a>
 
         </div>
+      </li>
+
+      <li>
+        <div class="offer-card has-bg-image img-holder"
+          style="background-image: url('./assets/images/offer-banner-2.jpg'); --width: 540; --height: 374;">
+
+          <p class="card-subtitle">Premios y Aseo</p>
+
+          <h3 class="h3 card-title">
+            Mima a tu verdadero <span class="span">amor</span>
+          </h3>
+
+          <a href="#" class="btn">Leer Más</a>
+
+        </div>
+      </li>
+
+      <li>
+        <div class="offer-card has-bg-image img-holder"
+          style="background-image: url('./assets/images/offer-banner-3.jpg'); --width: 540; --height: 374;">
+
+          <p class="card-subtitle">Nuestra Marca que te Encantará</p>
+
+          <h3 class="h3 card-title">
+            Novedades de este <span class="span">año</span>
+          </h3>
+
+          <a href="#" class="btn">Leer Más</a>
+
+        </div>
+      </li>
+
+    </ul>
+
+  </div>
+</section>
+
+
       </section>
 
       
@@ -3604,8 +2804,8 @@
                   </div>
 
                   <div class="price-box">
-                    <p class="price">$48.00</p>
-                    <del>$75.00</del>
+                    <p class="price">Bs.48.00</p>
+                    <del>Bs.75.00</del>
                   </div>
 
                 </div>
@@ -3657,8 +2857,8 @@
                   </div>
               
                   <div class="price-box">
-                    <p class="price">$45.00</p>
-                    <del>$56.00</del>
+                    <p class="price">Bs.45.00</p>
+                    <del>Bs.56.00</del>
                   </div>
               
                 </div>
@@ -3708,8 +2908,8 @@
                   </div>
               
                   <div class="price-box">
-                    <p class="price">$58.00</p>
-                    <del>$65.00</del>
+                    <p class="price">Bs.58.00</p>
+                    <del>Bs.65.00</del>
                   </div>
               
                 </div>
@@ -3761,8 +2961,8 @@
                   </div>
               
                   <div class="price-box">
-                    <p class="price">$25.00</p>
-                    <del>$35.00</del>
+                    <p class="price">Bs.25.00</p>
+                    <del>Bs.35.00</del>
                   </div>
               
                 </div>
@@ -3812,8 +3012,8 @@
                   </div>
               
                   <div class="price-box">
-                    <p class="price">$99.00</p>
-                    <del>$105.00</del>
+                    <p class="price">Bs.99.00</p>
+                    <del>Bs.105.00</del>
                   </div>
               
                 </div>
@@ -3865,8 +3065,8 @@
                   </div>
               
                   <div class="price-box">
-                    <p class="price">$150.00</p>
-                    <del>$170.00</del>
+                    <p class="price">Bs.150.00</p>
+                    <del>Bs.170.00</del>
                   </div>
               
                 </div>
@@ -3915,8 +3115,8 @@
                   </div>
               
                   <div class="price-box">
-                    <p class="price">$100.00</p>
-                    <del>$120.00</del>
+                    <p class="price">Bs.100.00</p>
+                    <del>Bs.120.00</del>
                   </div>
               
                 </div>
@@ -3968,8 +3168,8 @@
                   </div>
               
                   <div class="price-box">
-                    <p class="price">$25.00</p>
-                    <del>$30.00</del>
+                    <p class="price">Bs.25.00</p>
+                    <del>Bs.30.00</del>
                   </div>
               
                 </div>
@@ -4019,8 +3219,8 @@
                   </div>
               
                   <div class="price-box">
-                    <p class="price">$32.00</p>
-                    <del>$45.00</del>
+                    <p class="price">Bs.32.00</p>
+                    <del>Bs.45.00</del>
                   </div>
               
                 </div>
@@ -4072,8 +3272,8 @@
                   </div>
               
                   <div class="price-box">
-                    <p class="price">$58.00</p>
-                    <del>$64.00</del>
+                    <p class="price">Bs.58.00</p>
+                    <del>Bs.64.00</del>
                   </div>
               
                 </div>
@@ -4123,8 +3323,8 @@
                   </div>
               
                   <div class="price-box">
-                    <p class="price">$50.00</p>
-                    <del>$65.00</del>
+                    <p class="price">Bs.50.00</p>
+                    <del>Bs.65.00</del>
                   </div>
               
                 </div>
@@ -4176,8 +3376,8 @@
                   </div>
               
                   <div class="price-box">
-                    <p class="price">$78.00</p>
-                    <del>$85.00</del>
+                    <p class="price">Bs.78.00</p>
+                    <del>Bs.85.00</del>
                   </div>
               
                 </div>
@@ -4481,10 +3681,10 @@
 
       <div class="footer-brand">
 
-        <a href="#" class="logo">Kitter</a>
+        <a href="#" class="logo">MegaPet</a>
 
         <p class="footer-text">
-          Si tienes alguna pregunta, contáctanos en <a href="mailto:support@gmail.com" class="link">support@gmail.com</a>
+          Si tienes alguna pregunta, contáctanos en <a href="mailto:support@megapet.com" class="link">support@megapet.com</a>
         </p>
 
         <ul class="contact-list">
@@ -4493,14 +3693,14 @@
             <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
 
             <address class="address">
-              30 Buttonwood St.Pataskala OH 43062
+              Av. Principal 123, Ciudad, País
             </address>
           </li>
 
           <li class="contact-item">
             <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
 
-            <a href="tel:+16234567891011" class="contact-link">(+1)-6234-56-789-1011</a>
+            <a href="tel:+1234567890" class="contact-link">(+1) 234-567-890</a>
           </li>
 
         </ul>
@@ -4638,7 +3838,7 @@
     <div class="container">
 
       <p class="copyright">
-        &copy; 2022 Hecho con ♥ por <a href="#" class="copyright-link">codewithsadee.</a>
+        &copy; 2022 Hecho con ♥ por <a href="#" class="copyright-link">MegaPet.</a>
       </p>
 
       <img src="./assets/images/payment.png" width="397" height="32" loading="lazy" alt="método de pago" class="img">
@@ -4647,6 +3847,7 @@
   </div>
 
 </footer>
+
 
 
     <!-- 
