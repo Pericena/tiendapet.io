@@ -38,11 +38,6 @@
             align-items: center;
         } */
 
-        .search {
-            flex: 2;
-            display: flex;
-            justify-content: center;
-        }
 
         /* .cart {
             flex: 1;
@@ -303,46 +298,46 @@
   <!--
     - MODAL
   -->
+ <!-- <div class="modal" data-modal></div> -->
+<div class="modal" data-modal>
 
-  <div class="modal" data-modal>
+  <div class="modal-close-overlay" data-modal-overlay></div>
 
-    <div class="modal-close-overlay" data-modal-overlay></div>
+  <div class="modal-content">
 
-    <div class="modal-content">
+    <button class="modal-close-btn" data-modal-close>
+      <ion-icon name="close-outline"></ion-icon>
+    </button>
 
-      <button class="modal-close-btn" data-modal-close>
-        <ion-icon name="close-outline"></ion-icon>
-      </button>
+    <div class="newsletter-img">
+      <img src="./assets/images/brand-4.jpg" alt="Suscríbete al boletín" width="400" height="400">
+    </div>
 
-      <!-- <div class="newsletter-img">
-        <img src="./assets/images/newsletter.png" alt="subscribe newsletter" width="400" height="400">
-      </div> -->
+    <div class="newsletter">
 
-      <!-- <div class="newsletter">
+      <form action="#">
 
-        <form action="#">
+        <div class="newsletter-header">
 
-          <div class="newsletter-header">
+          <h3 class="newsletter-title">Suscríbete a Nuestro Boletín</h3>
 
-            <h3 class="newsletter-title">Subscribe Newsletter.</h3>
+          <p class="newsletter-desc">
+            Suscríbete a <b>Nuestra Clínica Veterinaria</b> para recibir las últimas novedades y descuentos en productos para tus mascotas.
+          </p>
 
-            <p class="newsletter-desc">
-              Subscribe the <b>Anon</b> to get latest products and discount update.
-            </p>
+        </div>
 
-          </div>
+        <input type="email" name="email" class="email-field" placeholder="Correo Electrónico" required>
 
-          <input type="email" name="email" class="email-field" placeholder="Email Address" required>
+        <button type="submit" class="btn-newsletter">Suscribirse</button>
 
-          <button type="submit" class="btn-newsletter">Subscribe</button>
-
-        </form>
-
-      </div> -->
+      </form>
 
     </div>
 
   </div>
+
+</div>
 
 
 
@@ -392,7 +387,7 @@
 
     <div class="header-top">
 
-      <div class="container">
+      <div class="container advertising">
 
         <ul class="header-social-container">
 
@@ -422,12 +417,10 @@
 
         </ul>
 
-        <div class="header-alert-news">
-          <p>
-            <b>Ganhe 12% OFF nas compras </b>
-            acima de R$269 com o cupom MAECUIDA
-          </p> 
-        </div>
+<div class="header-alert-news" style="background-color: #e91022; color: white; padding: 10px;">
+  <p><b>Obtén 12% de descuento en compras</b> superiores a Bs 269 con el cupón MAECUIDA</p>
+</div>
+        
 
         <div class="header-top-actions">
 
@@ -459,19 +452,9 @@
         <a href="#" class="header-logo">
           <img src="./assets/images/logo/logo.png" alt="Megapet" width="90" height="50">
         </a>
-
-          <!-- se añadio -->
-                        <div class="search">
-                    <input type="text" placeholder="Busque lo que necesite ... "
-                        style="padding: 15px; width: 100%; padding: 5px; background-color: #adadad67; border-radius: 15px; border: 1px solid #cccccc70;">
-                </div>
-
-                <!-- se añadio -->
-        <div class="header-search-container">
-
-          <input type="search" name="search" class="search-field" placeholder="Enter your product name...">
-
-          
+        <div class="header-search-container" >
+          <input style="width: 100%; border-radius: 10px;" type="search" 
+          name="search" class="search-field" placeholder="Buscar producto.....">
           <button class="search-btn">
             <ion-icon name="search-outline"></ion-icon>
           </button>
@@ -1081,23 +1064,11 @@
       - BANNER
     -->
 
-<div class="banner">
+ <div class="banner">
 
   <div class="container">
     
     <div class="slider-container has-scrollbar">
-
-      <div class="slider-item">
-        <img src="./assets/images/banner-1.jpg" alt="food sale for pets" class="banner-img">
-        <div class="banner-content">
-          <p class="banner-subtitle">Productos en tendencia</p>
-          <h2 class="banner-title">Venta de comida para mascotas</h2>
-          <p class="banner-text">
-            desde &dollar; <b>10</b>.00
-          </p>
-          <a href="#" class="banner-btn">Comprar ahora</a>
-        </div>
-      </div>
 
       <div class="slider-item">
         <img src="./assets/images/banner-2.jpg" alt="accessories for pets" class="banner-img">
@@ -1106,6 +1077,18 @@
           <h2 class="banner-title">Accesorios modernos para mascotas</h2>
           <p class="banner-text">
             desde &dollar; <b>5</b>.00
+          </p>
+          <a href="#" class="banner-btn">Comprar ahora</a>
+        </div>
+      </div>
+
+      <div class="slider-item">
+        <img src="./assets/images/banner-1.jpg" alt="food sale for pets" class="banner-img">
+        <div class="banner-content">
+          <p class="banner-subtitle">Productos en tendencia</p>
+          <h2 class="banner-title">Venta de comida para mascotas</h2>
+          <p class="banner-text">
+            desde &dollar; <b>10</b>.00
           </p>
           <a href="#" class="banner-btn">Comprar ahora</a>
         </div>
@@ -1123,18 +1106,17 @@
         </div>
       </div>
 
-    </div>
-    
-    <button class="prev">&#10094;</button>
-    <button class="next">&#10095;</button>
 
+
+
+    </div>
   </div>
 
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const slides = document.querySelector('.slider-container');
+        const slides = document.querySelector('.slider');
         const prevBtn = document.querySelector('.prev');
         const nextBtn = document.querySelector('.next');
         let index = 0;
@@ -1162,17 +1144,17 @@
 
 
     <!-- se añadio --> 
-    <!-- <div class="slider-container" style="margin-right:10%; margin-left:12%; margin-top: 1%;">
+    <div class="slider-container" style="margin-right:10%; margin-left:12%; margin-top: 1%;">
         <div class="slider">
             <div class="slides">
-                <a href="https://www.example.com/link1" target="_blank"><img src="assets/images/banner-1.jpg" alt="Imagen 1"></a>
-                <a href="https://www.example.com/link2" target="_blank"><img src="assets/images/banner-2.jpg" alt="Imagen 2"></a>
-                <a href="https://www.example.com/link3" target="_blank"><img src="assets/images/banner-3.jpg" alt="Imagen 3"></a>
+                <a href="/" target="_blank"><img src="assets/images/banner/bg1.png" alt="Imagen 1"></a>
+                <a href="/" target="_blank"><img src="assets/images/banner/bg2.png" alt="Imagen 2"></a>
+                <a href="/" target="_blank"><img src="assets/images/banner/bg3.png" alt="Imagen 3"></a>
             </div>
             <button class="prev">&#10094;</button>
             <button class="next">&#10095;</button>
         </div>
-    </div> -->
+    </div>
 
 
     
