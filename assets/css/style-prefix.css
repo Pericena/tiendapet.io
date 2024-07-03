@@ -88,6 +88,7 @@ html {
   font-family: "Poppins", sans-serif;
   -ms-scroll-chaining: none;
       overscroll-behavior: contain;
+
 }
 
 input {
@@ -329,14 +330,14 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
 
 .newsletter-title {
   color: var(--onyx);
-  font-size: var(--fs-2);
+  font-size: var(--fs-4);
   font-weight: var(--weight-600);
   margin-bottom: 10px;
 }
 
 .newsletter-desc {
   color: var(--sonic-silver);
-  font-size: var(--fs-7);
+  font-size: var(--fs-8);
   line-height: 1.6;
 }
 
@@ -846,7 +847,7 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
 
 .banner-title {
   color: var(--eerie-black);
-  font-size: var(--fs-1);
+  font-size: var(--fs-2);
   text-transform: uppercase;
   line-height: 1;
   margin-bottom: 10px;
@@ -3213,7 +3214,7 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
    * #BANNER
    */
 
-  .slider-item { height: 450px; }
+  .slider-item { height: 300px;}
 
   .banner-content {
     left: 110px;
