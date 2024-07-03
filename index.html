@@ -1,642 +1,811 @@
-
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Megapet</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Megapet</title>
-
-  <!--
+    <!--
     - favicon
   -->
-  <link rel="shortcut icon" href="./assets/images/logo/logo.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="./assets/images/logo/logo.png"
+      type="image/x-icon"
+    />
 
-  <!--
+    <!--
     - custom css link
   -->
-  <link rel="stylesheet" href="./assets/css/style-prefix.css">
-  <link rel="stylesheet" href="./assets/css/css.css">
-  <!--
+    <link rel="stylesheet" href="./assets/css/style-prefix.css" />
+    <link rel="stylesheet" href="./assets/css/css.css" />
+    <!--
     - google font link
   -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-</head>
+  <style>
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+    }
 
-    <style>
-  
-        .carousel {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            overflow: hidden;
-        }
+    .cards-container {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
 
-        .cards-container {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
+    .card-c {
+      flex: 0 0 300px;
+      height: 100%;
+      margin-right: 10px;
+      border: 2px solid #e2e2e296;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      padding: 1%;
+      border-radius: 25px;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .card-c {
-            flex: 0 0 300px;
-            height: 100%;
-            margin-right: 10px;
-            border: 2px solid #e2e2e296;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            padding: 1%;
-            border-radius: 25px;
-            justify-content: center;
-            align-items: center;
-        }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 1;
+    }
 
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            z-index: 1;
-        }
+    .prev-btn {
+      left: 10px;
+    }
 
-        .prev-btn {
-            left: 10px;
-        }
+    .next-btn {
+      right: 10px;
+    }
+  </style>
 
-        .next-btn {
-            right: 10px;
-        }
-    </style>
+  <style>
+    .slider-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-    <style>
-        .slider-container {
+    .slider {
+      position: relative;
+      width: 100%;
+      border-radius: 10px;
+    }
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
 
-        .slider {
-            position: relative;
-            width: 100%;
-            border-radius: 10px;
-        }
+    .slides a {
+      min-width: 100%;
+      transition: opacity 0.5s;
+    }
 
-        .slides {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
+    .slides img {
+      width: 100%;
+      display: block;
+    }
 
-        .slides a {
-            min-width: 100%;
-            transition: opacity 0.5s;
-        }
+    .prev,
+    .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0);
+      color: rgb(252, 3, 3);
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 10;
+    }
 
-        .slides img {
-            width: 100%;
-            display: block;
-        }
+    .prev {
+      left: 10px;
+    }
 
-        .prev,
-        .next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0);
-            color: rgb(252, 3, 3);
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 50%;
-            z-index: 10;
-        }
+    .next {
+      right: 10px;
+    }
 
-        .prev {
-            left: 10px;
-        }
+    .prev:hover,
+    .next:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+  </style>
 
-        .next {
-            right: 10px;
-        }
+  <style>
+    .grid-large {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .prev:hover,
-        .next:hover {
-            background: rgba(0, 0, 0, 0.8);
-        }
-    </style>
+    .large-image {
+      position: relative;
+    }
 
-    <style>
-        .grid-large {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            
-        }
+    .large-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+    }
 
-        .large-image {
-            position: relative;
-        }
+    .overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+    }
 
-        .large-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 15px;
-        }
+    .overlay h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
 
-        .overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            text-align: center;
-        }
+    .overlay .view-all {
+      text-decoration: none;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
 
-        .overlay h2 {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
+    /* Grid for the circular images */
+    .grid-small {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      width: 100%;
+      background-color: #f8e9d2;
+      border-radius: 25px;
+      margin-left: 1%;
+    }
 
-        .overlay .view-all {
-            text-decoration: none;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
+    .circular-image {
+      text-align: center;
+      margin: 10px;
+    }
 
-        /* Grid for the circular images */
-        .grid-small {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            width: 100%;
-            background-color:#F8E9D2;
-            border-radius: 25px;
-            margin-left: 1%;
-        }
+    .circular-image img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
 
-        .circular-image {
-            text-align: center;
-            margin: 10px;
-        }
+    .circular-image p {
+      margin-top: 10px;
+      font-size: 1em;
+    }
 
-        .circular-image img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+    .grid-prod {
+      display: flex;
+    }
+    .cabeza2 {
+      padding: 10%;
+      display: none;
+      justify-content: center;
 
-        .circular-image p {
-            margin-top: 10px;
-            font-size: 1em;
-        }
+      align-items: center;
 
-        .grid-prod {
-            display: flex;
-        }
-        .cabeza2{
-            padding: 10%;
-            display: none;
-            justify-content: center;
-           
-            align-items: center;
-           
-            height: 150px;
-            width: 100%;
-           
+      height: 150px;
+      width: 100%;
+    }
 
-        }
+    /* Responsive design */
+    @media (max-width: 1000px) {
+      .grid-prod {
+        display: inline;
+        justify-content: center;
 
-        /* Responsive design */
-        @media (max-width: 1000px) {
-            .grid-prod {
-                display: inline;
-                justify-content: center;
+        align-items: center;
+      }
+      .cabeza {
+        display: none;
+      }
+      .cabeza2 {
+        display: inline;
+      }
 
+      .grid-large img {
+        width: 110%;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5%;
+      }
 
-                align-items: center;
-            }
-            .cabeza{
-                display: none;
-            }
-            .cabeza2{
-                display: inline;
-            }
+      .grid-small {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
 
-            .grid-large img {
-                width: 110%;
-                justify-content: center;
-                align-items: center;
-                margin-bottom: 5%;
-            }
+      .circular-image img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  </style>
 
-            .grid-small {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-            }
+  <body>
+    <div class="overlay" data-overlay></div>
 
-            .circular-image img {
-                width: 80px;
-                height: 80px;
-            }
-        }
-    </style>
-
-<body>
-
-
-  <div class="overlay" data-overlay></div>
-
-  <!--
+    <!--
     - MODAL
   -->
 
-<div class="modal" data-modal>
-  <div class="modal-close-overlay" data-modal-overlay></div>
-  <div class="modal-content">
-    <button class="modal-close-btn" data-modal-close>
-      <ion-icon name="close-outline"></ion-icon>
-    </button>
-    <div class="newsletter-img">
-      <img src="./assets/images/brand-4.jpg" alt="Suscríbete al boletín" width="400" height="400">
-    </div>
-    <div class="newsletter">
-      <form action="#">
-        <div class="newsletter-header">
-          <h3 class="newsletter-title">Suscríbete a Nuestro Boletín</h3>
-          <p class="newsletter-desc">
-            Suscríbete a <b>Nuestra Clínica Veterinaria</b> para recibir las últimas novedades y descuentos en productos para tus mascotas.
-          </p>
+    <div class="modal" data-modal>
+      <div class="modal-close-overlay" data-modal-overlay></div>
+      <div class="modal-content">
+        <button class="modal-close-btn" data-modal-close>
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+        <div class="newsletter-img">
+          <img
+            src="./assets/images/brand-4.jpg"
+            alt="Suscríbete al boletín"
+            width="400"
+            height="400"
+          />
         </div>
-        <input type="email" name="email" class="email-field" placeholder="Correo Electrónico" required>
-        <button type="submit" class="btn-newsletter">Suscribirse</button>
-      </form>
+        <div class="newsletter">
+          <form action="#">
+            <div class="newsletter-header">
+              <h3 class="newsletter-title">Suscríbete a Nuestro Boletín</h3>
+              <p class="newsletter-desc">
+                Suscríbete a <b>Nuestra Clínica Veterinaria</b> para recibir las
+                últimas novedades y descuentos en productos para tus mascotas.
+              </p>
+            </div>
+            <input
+              type="email"
+              name="email"
+              class="email-field"
+              placeholder="Correo Electrónico"
+              required
+            />
+            <button type="submit" class="btn-newsletter">Suscribirse</button>
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-
-
-
-
-  <!--
+    <!--
     - NOTIFICATION TOAST
   -->
 
-<div class="notification-toast" data-toast>
-  <button class="toast-close-btn" data-toast-close>
-    <ion-icon name="close-outline"></ion-icon>
-  </button>
-  <div class="toast-banner">
-    <img src="./assets/images/products/category-4.jpg" alt="Descripción de la comida para mascotas" width="80" height="70">
-  </div>
-  <div class="toast-detail">
-    <p class="toast-message">
-      ¡Nuevo producto disponible!
-    </p>
-    <p class="toast-title">
-      Comida Premium para Mascotas
-    </p>
-    <p class="toast-meta">
-      <time datetime="PT2M">hace 2 minutos</time>
-    </p>
-  </div>
-</div>
+    <div class="notification-toast" data-toast>
+      <button class="toast-close-btn" data-toast-close>
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+      <div class="toast-banner">
+        <img
+          src="./assets/images/products/category-4.jpg"
+          alt="Descripción de la comida para mascotas"
+          width="80"
+          height="70"
+        />
+      </div>
+      <div class="toast-detail">
+        <p class="toast-message">¡Nuevo producto disponible!</p>
+        <p class="toast-title">Comida Premium para Mascotas</p>
+        <p class="toast-meta">
+          <time datetime="PT2M">hace 2 minutos</time>
+        </p>
+      </div>
+    </div>
 
-
-
-
-
-
-  <!--
+    <!--
     - HEADER
   -->
 
-  <header>
-    <div class="header-top">
-      <div class="container advertising">
-        <ul class="header-social-container">
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
-        </ul>
+    <header>
+      <div class="header-top">
+        <div class="container advertising">
+          <ul class="header-social-container">
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+          </ul>
 
-        <div class="header-alert-news" style="background-color: #e91022; color: white; padding: 10px;">
-          <p><b>Obtén 12% de descuento en compras</b> superiores a Bs 269 con el cupón MAECUIDA</p>
-        </div>
+          <div
+            class="header-alert-news"
+            style="background-color: #e91022; color: white; padding: 10px"
+          >
+            <p>
+              <b>Obtén 12% de descuento en compras</b> superiores a Bs 269 con
+              el cupón MAECUIDA
+            </p>
+          </div>
 
-        <div class="header-top-actions">
-          <select name="currency">
-            <option value="usd">USD &dollar;</option>
-            <option value="eur">EUR &euro;</option>
-          </select>
-          <select name="language">
-            <option value="en-US">English</option>
-            <option value="es-ES">Espa&ntilde;ol</option>
-            <option value="fr">Fran&ccedil;ais</option>
-          </select>
+          <div class="header-top-actions">
+            <select name="currency">
+              <option value="usd">USD &dollar;</option>
+              <option value="eur">EUR &euro;</option>
+            </select>
+            <select name="language">
+              <option value="en-US">English</option>
+              <option value="es-ES">Espa&ntilde;ol</option>
+              <option value="fr">Fran&ccedil;ais</option>
+            </select>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="header-main">
-      <div class="container">
-        <a href="#" class="header-logo">
-          <img src="./assets/images/logo/logo.png" alt="Megapet" width="90" height="50">
+      <div class="header-main">
+        <div class="container">
+          <a href="#" class="header-logo">
+            <img
+              src="./assets/images/logo/logo.png"
+              alt="Megapet"
+              width="40"
+              height="40"
+            />
+          </a>
+          <div class="header-search-container">
+            <input
+              style="width: 100%; border-radius: 10px"
+              type="search"
+              name="search"
+              class="search-field"
+              placeholder="Buscar producto....."
+            />
+            <button class="search-btn">
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+          </div>
+          <div class="header-user-actions">
+            <a href="{{ route('login') }}" class="action-btn">
+              <ion-icon name="person-outline"></ion-icon>
+            </a>
+            <button class="action-btn">
+              <ion-icon name="heart-outline"></ion-icon>
+              <span class="count">0</span>
+            </button>
+            <button class="action-btn">
+              <ion-icon name="bag-handle-outline"></ion-icon>
+              <span class="count">0</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <nav class="desktop-navigation-menu">
+        <div class="container">
+          <ul class="desktop-menu-category-list">
+            <li class="menu-category">
+              <a href="#" class="menu-title">Home</a>
+            </li>
+
+            <li class="menu-category">
+              <a href="#" class="menu-title">Cachorros</a>
+
+              <div class="dropdown-panel">
+                <ul class="dropdown-panel-list">
+                  <li class="menu-title">
+                    <a href="#">Comida</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">Croquetas</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">Latas</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">Snacks</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">Dietas Especiales</a>
+                  </li>
+                </ul>
+
+                <ul class="dropdown-panel-list">
+                  <li class="menu-title">
+                    <a href="#">Juguetes</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">Pelotas</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">Cuerdas</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">Peluche</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">Interactivos</a>
+                  </li>
+                </ul>
+
+                <ul class="dropdown-panel-list">
+                  <li class="menu-title">
+                    <a href="#">Cuidado y Salud</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">Champús</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">Cepillos</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">Vitaminas</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">Antipulgas</a>
+                  </li>
+                </ul>
+
+                <ul class="dropdown-panel-list">
+                  <li class="menu-title">
+                    <a href="#">Accesorios</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">Collares</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">Correas</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">Camas</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">Ropa</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="menu-category">
+              <a href="#" class="menu-title">Gatos</a>
+
+              <ul class="dropdown-list">
+                <li class="dropdown-item">
+                  <a href="#">Comida</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Arena</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Juguetes</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Rascadores</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Camas</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Transportadoras</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Accesorios</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-category">
+              <a href="#" class="menu-title">Pájaros</a>
+
+              <ul class="dropdown-list">
+                <li class="dropdown-item">
+                  <a href="#">Comida</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Jaulas</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Juguetes</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Perchas</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Accesorios</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Vitaminas y Suplementos</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-category">
+              <a href="#" class="menu-title">Peces</a>
+
+              <ul class="dropdown-list">
+                <li class="dropdown-item">
+                  <a href="#">Alimento</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Acuarios</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Filtros</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Decoración</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Iluminación</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Accesorios</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Medicamentos</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-category">
+              <a href="#" class="menu-title">Otros Bichos</a>
+
+              <ul class="dropdown-list">
+                <li class="dropdown-item">
+                  <a href="#">Clothes Otros Bichos</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Deodorant</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Flower Fragrance</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">Air Freshener</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-category">
+              <a href="#" class="menu-title">Casa y Jardín</a>
+            </li>
+
+            <li class="menu-category">
+              <a href="#" class="menu-title">Firma</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="mobile-bottom-navigation">
+        <button class="action-btn" data-mobile-menu-open-btn>
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+
+        <a href="{{ route('login') }}" class="action-btn">
+          <ion-icon name="person-outline"></ion-icon>
         </a>
-        <div class="header-search-container" >
-          <input style="width: 100%; border-radius: 10px;" type="search" 
-          name="search" class="search-field" placeholder="Buscar producto.....">
-          <button class="search-btn">
-            <ion-icon name="search-outline"></ion-icon>
-          </button>
-        </div>
-        <div class="header-user-actions">
-          <button class="action-btn">
-            <ion-icon name="person-outline"></ion-icon>
-          </button>
-          <button class="action-btn">
-            <ion-icon name="heart-outline"></ion-icon>
-            <span class="count">0</span>
-          </button>
-          <button class="action-btn">
-            <ion-icon name="bag-handle-outline"></ion-icon>
-            <span class="count">0</span>
-          </button>
-        </div>
-      </div>
-    </div>
 
-    <nav class="desktop-navigation-menu">
-      <div class="container">
-        <ul class="desktop-menu-category-list">
+        <button class="action-btn">
+          <ion-icon name="home-outline"></ion-icon>
+        </button>
+
+        <button class="action-btn">
+          <ion-icon name="heart-outline"></ion-icon>
+
+          <span class="count">0</span>
+        </button>
+
+        <button class="action-btn" data-mobile-menu-open-btn>
+          <ion-icon name="grid-outline"></ion-icon>
+        </button>
+      </div>
+
+      <nav class="mobile-navigation-menu has-scrollbar" data-mobile-menu>
+        <div class="menu-top">
+          <h2 class="menu-title">Menu</h2>
+
+          <button class="menu-close-btn" data-mobile-menu-close-btn>
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+        </div>
+
+        <ul class="mobile-menu-category-list">
           <li class="menu-category">
             <a href="#" class="menu-title">Home</a>
           </li>
 
-
-
-<li class="menu-category">
-  <a href="#" class="menu-title">Cachorros</a>
-
-  <div class="dropdown-panel">
-
-    <ul class="dropdown-panel-list">
-
-      <li class="menu-title">
-        <a href="#">Comida</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">Croquetas</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">Latas</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">Snacks</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">Dietas Especiales</a>
-      </li>
-
-    </ul>
-
-    <ul class="dropdown-panel-list">
-
-      <li class="menu-title">
-        <a href="#">Juguetes</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">Pelotas</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">Cuerdas</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">Peluche</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">Interactivos</a>
-      </li>
-
-    </ul>
-
-    <ul class="dropdown-panel-list">
-
-      <li class="menu-title">
-        <a href="#">Cuidado y Salud</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">Champús</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">Cepillos</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">Vitaminas</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">Antipulgas</a>
-      </li>
-
-    </ul>
-
-    <ul class="dropdown-panel-list">
-
-      <li class="menu-title">
-        <a href="#">Accesorios</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">Collares</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">Correas</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">Camas</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">Ropa</a>
-      </li>
-
-    </ul>
-
-  </div>
-</li>
-
-<li class="menu-category">
-  <a href="#" class="menu-title">Gatos</a>
-
-  <ul class="dropdown-list">
-
-    <li class="dropdown-item">
-      <a href="#">Comida</a>
-    </li>
-
-    <li class="dropdown-item">
-      <a href="#">Arena</a>
-    </li>
-
-    <li class="dropdown-item">
-      <a href="#">Juguetes</a>
-    </li>
-
-    <li class="dropdown-item">
-      <a href="#">Rascadores</a>
-    </li>
-
-    <li class="dropdown-item">
-      <a href="#">Camas</a>
-    </li>
-
-    <li class="dropdown-item">
-      <a href="#">Transportadoras</a>
-    </li>
-
-    <li class="dropdown-item">
-      <a href="#">Accesorios</a>
-    </li>
-
-  </ul>
-</li>
-
-
-<li class="menu-category">
-  <a href="#" class="menu-title">Pájaros</a>
-
-  <ul class="dropdown-list">
-
-    <li class="dropdown-item">
-      <a href="#">Comida</a>
-    </li>
-
-    <li class="dropdown-item">
-      <a href="#">Jaulas</a>
-    </li>
-
-    <li class="dropdown-item">
-      <a href="#">Juguetes</a>
-    </li>
-
-    <li class="dropdown-item">
-      <a href="#">Perchas</a>
-    </li>
-
-    <li class="dropdown-item">
-      <a href="#">Accesorios</a>
-    </li>
-
-    <li class="dropdown-item">
-      <a href="#">Vitaminas y Suplementos</a>
-    </li>
-
-  </ul>
-</li>
-
-
-<li class="menu-category">
-  <a href="#" class="menu-title">Peces</a>
-
-  <ul class="dropdown-list">
-
-    <li class="dropdown-item">
-      <a href="#">Alimento</a>
-    </li>
-
-    <li class="dropdown-item">
-      <a href="#">Acuarios</a>
-    </li>
-
-    <li class="dropdown-item">
-      <a href="#">Filtros</a>
-    </li>
-
-    <li class="dropdown-item">
-      <a href="#">Decoración</a>
-    </li>
-
-    <li class="dropdown-item">
-      <a href="#">Iluminación</a>
-    </li>
-
-    <li class="dropdown-item">
-      <a href="#">Accesorios</a>
-    </li>
-
-    <li class="dropdown-item">
-      <a href="#">Medicamentos</a>
-    </li>
-
-  </ul>
-</li>
-
+          <li class="menu-category">
+            <button class="accordion-menu" data-accordion-btn>
+              <p class="menu-title">Gatos</p>
+
+              <div>
+                <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+              </div>
+            </button>
+
+            <ul class="submenu-category-list" data-accordion>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Alimento</a>
+              </li>
+
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Arena</a>
+              </li>
+
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Juguetes</a>
+              </li>
+
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Rascadores</a>
+              </li>
+
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Accesorios</a>
+              </li>
+            </ul>
+          </li>
 
           <li class="menu-category">
-            <a href="#" class="menu-title">Otros Bichos</a>
+            <button class="accordion-menu" data-accordion-btn>
+              <p class="menu-title">Pájaros</p>
 
-            <ul class="dropdown-list">
+              <div>
+                <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+              </div>
+            </button>
 
-              <li class="dropdown-item">
-                <a href="#">Clothes Otros Bichos</a>
+            <ul class="submenu-category-list" data-accordion>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Alimento</a>
               </li>
 
-              <li class="dropdown-item">
-                <a href="#">Deodorant</a>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Jaulas</a>
               </li>
 
-              <li class="dropdown-item">
-                <a href="#">Flower Fragrance</a>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Juguetes</a>
               </li>
 
-              <li class="dropdown-item">
-                <a href="#">Air Freshener</a>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Perchas</a>
               </li>
 
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Accesorios</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="menu-category">
+            <button class="accordion-menu" data-accordion-btn>
+              <p class="menu-title">Peces</p>
+
+              <div>
+                <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+              </div>
+            </button>
+
+            <ul class="submenu-category-list" data-accordion>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Alimento</a>
+              </li>
+
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Acuarios</a>
+              </li>
+
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Filtros</a>
+              </li>
+
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Decoración</a>
+              </li>
+
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Accesorios</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="menu-category">
+            <button class="accordion-menu" data-accordion-btn>
+              <p class="menu-title">Otros Bichos</p>
+
+              <div>
+                <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+              </div>
+            </button>
+
+            <ul class="submenu-category-list" data-accordion>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Alimento</a>
+              </li>
+
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Cuidado</a>
+              </li>
+
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Juguetes</a>
+              </li>
+
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Accesorios</a>
+              </li>
             </ul>
           </li>
 
@@ -647,1677 +816,1658 @@
           <li class="menu-category">
             <a href="#" class="menu-title">Firma</a>
           </li>
-
         </ul>
 
-      </div>
-
-    </nav>
-
-    <div class="mobile-bottom-navigation">
-
-      <button class="action-btn" data-mobile-menu-open-btn>
-        <ion-icon name="menu-outline"></ion-icon>
-      </button>
-
-      <button class="action-btn">
-        <ion-icon name="bag-handle-outline"></ion-icon>
-
-        <span class="count">0</span>
-      </button>
-
-      <button class="action-btn">
-        <ion-icon name="home-outline"></ion-icon>
-      </button>
-
-      <button class="action-btn">
-        <ion-icon name="heart-outline"></ion-icon>
-
-        <span class="count">0</span>
-      </button>
-
-      <button class="action-btn" data-mobile-menu-open-btn>
-        <ion-icon name="grid-outline"></ion-icon>
-      </button>
-
-    </div>
-
-    <nav class="mobile-navigation-menu  has-scrollbar" data-mobile-menu>
-
-      <div class="menu-top">
-        <h2 class="menu-title">Menu</h2>
-
-        <button class="menu-close-btn" data-mobile-menu-close-btn>
-          <ion-icon name="close-outline"></ion-icon>
-        </button>
-      </div>
-
-<ul class="mobile-menu-category-list">
-
-  <li class="menu-category">
-    <a href="#" class="menu-title">Home</a>
-  </li>
-
-  <li class="menu-category">
-
-    <button class="accordion-menu" data-accordion-btn>
-      <p class="menu-title">Gatos</p>
-
-      <div>
-        <ion-icon name="add-outline" class="add-icon"></ion-icon>
-        <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-      </div>
-    </button>
-
-    <ul class="submenu-category-list" data-accordion>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Alimento</a>
-      </li>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Arena</a>
-      </li>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Juguetes</a>
-      </li>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Rascadores</a>
-      </li>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Accesorios</a>
-      </li>
-
-    </ul>
-
-  </li>
-
-  <li class="menu-category">
-
-    <button class="accordion-menu" data-accordion-btn>
-      <p class="menu-title">Pájaros</p>
-
-      <div>
-        <ion-icon name="add-outline" class="add-icon"></ion-icon>
-        <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-      </div>
-    </button>
-
-    <ul class="submenu-category-list" data-accordion>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Alimento</a>
-      </li>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Jaulas</a>
-      </li>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Juguetes</a>
-      </li>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Perchas</a>
-      </li>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Accesorios</a>
-      </li>
-
-    </ul>
-
-  </li>
-
-  <li class="menu-category">
-
-    <button class="accordion-menu" data-accordion-btn>
-      <p class="menu-title">Peces</p>
-
-      <div>
-        <ion-icon name="add-outline" class="add-icon"></ion-icon>
-        <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-      </div>
-    </button>
-
-    <ul class="submenu-category-list" data-accordion>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Alimento</a>
-      </li>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Acuarios</a>
-      </li>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Filtros</a>
-      </li>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Decoración</a>
-      </li>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Accesorios</a>
-      </li>
-
-    </ul>
-
-  </li>
-
-  <li class="menu-category">
-
-    <button class="accordion-menu" data-accordion-btn>
-      <p class="menu-title">Otros Bichos</p>
-
-      <div>
-        <ion-icon name="add-outline" class="add-icon"></ion-icon>
-        <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-      </div>
-    </button>
-
-    <ul class="submenu-category-list" data-accordion>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Alimento</a>
-      </li>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Cuidado</a>
-      </li>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Juguetes</a>
-      </li>
-
-      <li class="submenu-category">
-        <a href="#" class="submenu-title">Accesorios</a>
-      </li>
-
-    </ul>
-
-  </li>
-
-  <li class="menu-category">
-    <a href="#" class="menu-title">Casa y Jardín</a>
-  </li>
-
-  <li class="menu-category">
-    <a href="#" class="menu-title">Firma</a>
-  </li>
-
-</ul>
-
-
-      <div class="menu-bottom">
-
-        <ul class="menu-category-list">
-
-          <li class="menu-category">
-
-            <button class="accordion-menu" data-accordion-btn>
-              <p class="menu-title">Language</p>
-
-              <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
-            </button>
-
-            <ul class="submenu-category-list" data-accordion>
-
-              <li class="submenu-category">
-                <a href="#" class="submenu-title">English</a>
-              </li>
-
-              <li class="submenu-category">
-                <a href="#" class="submenu-title">Espa&ntilde;ol</a>
-              </li>
-
-              <li class="submenu-category">
-                <a href="#" class="submenu-title">Fren&ccedil;h</a>
-              </li>
-
-            </ul>
-
-          </li>
-
-          <li class="menu-category">
-            <button class="accordion-menu" data-accordion-btn>
-              <p class="menu-title">Currency</p>
-              <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
-            </button>
-
-            <ul class="submenu-category-list" data-accordion>
-              <li class="submenu-category">
-                <a href="#" class="submenu-title">USD &dollar;</a>
-              </li>
-
-              <li class="submenu-category">
-                <a href="#" class="submenu-title">EUR &euro;</a>
-              </li>
-            </ul>
-          </li>
-
-        </ul>
-
-        <ul class="menu-social-container">
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
-
-        </ul>
-
-      </div>
-
-    </nav>
-
-  </header>
-
-
-
-
-
-  <!--
+        <div class="menu-bottom">
+          <ul class="menu-category-list">
+            <li class="menu-category">
+              <button class="accordion-menu" data-accordion-btn>
+                <p class="menu-title">Language</p>
+
+                <ion-icon
+                  name="caret-back-outline"
+                  class="caret-back"
+                ></ion-icon>
+              </button>
+
+              <ul class="submenu-category-list" data-accordion>
+                <li class="submenu-category">
+                  <a href="#" class="submenu-title">English</a>
+                </li>
+
+                <li class="submenu-category">
+                  <a href="#" class="submenu-title">Espa&ntilde;ol</a>
+                </li>
+
+                <li class="submenu-category">
+                  <a href="#" class="submenu-title">Fren&ccedil;h</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-category">
+              <button class="accordion-menu" data-accordion-btn>
+                <p class="menu-title">Currency</p>
+                <ion-icon
+                  name="caret-back-outline"
+                  class="caret-back"
+                ></ion-icon>
+              </button>
+
+              <ul class="submenu-category-list" data-accordion>
+                <li class="submenu-category">
+                  <a href="#" class="submenu-title">USD &dollar;</a>
+                </li>
+
+                <li class="submenu-category">
+                  <a href="#" class="submenu-title">EUR &euro;</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="menu-social-container">
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!--
     - MAIN
   -->
 
-  <main>
-
-    <!--
+    <main>
+      <!--
       - BANNER
     -->
 
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const slides = document.querySelector(".slider");
+          const prevBtn = document.querySelector(".prev");
+          const nextBtn = document.querySelector(".next");
+          let index = 0;
+          const slideCount = slides.children.length;
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const slides = document.querySelector('.slider');
-        const prevBtn = document.querySelector('.prev');
-        const nextBtn = document.querySelector('.next');
-        let index = 0;
-        const slideCount = slides.children.length;
-
-        function showSlide(i) {
+          function showSlide(i) {
             index = (i + slideCount) % slideCount;
             slides.style.transform = `translateX(${-index * 100}%)`;
-        }
+          }
 
-        function nextSlide() {
+          function nextSlide() {
             showSlide(index + 1);
-        }
+          }
 
-        function prevSlide() {
+          function prevSlide() {
             showSlide(index - 1);
-        }
+          }
 
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
+          nextBtn.addEventListener("click", nextSlide);
+          prevBtn.addEventListener("click", prevSlide);
 
-        setInterval(nextSlide, 3000); // Cambia la imagen cada 3 segundos
-    });
-</script>
+          setInterval(nextSlide, 3000); // Cambia la imagen cada 3 segundos
+        });
+      </script>
 
-
-    <!-- se añadio --> 
-    <div class="slider-container" style="margin-right:10%; margin-left:12%; margin-top: 1%;">
+      <!-- se añadio -->
+      <div
+        class="slider-container"
+        style="margin-right: 10%; margin-left: 12%; margin-top: 1%"
+      >
         <div class="slider">
-            <div class="slides">
-                <a href="/" target="_blank"><img src="assets/images/banner/bg1.png" alt="Imagen 1"></a>
-                <a href="/" target="_blank"><img src="assets/images/banner/bg2.png" alt="Imagen 2"></a>
-                <a href="/" target="_blank"><img src="assets/images/banner/bg3.png" alt="Imagen 3"></a>
-            </div>
-            <button class="prev">&#10094;</button>
-            <button class="next">&#10095;</button>
+          <div class="slides">
+            <a href="/" target="_blank"
+              ><img src="assets/images/banner/bg1.png" alt="Imagen 1"
+            /></a>
+            <a href="/" target="_blank"
+              ><img src="assets/images/banner/bg2.png" alt="Imagen 2"
+            /></a>
+            <a href="/" target="_blank"
+              ><img src="assets/images/banner/bg3.png" alt="Imagen 3"
+            /></a>
+          </div>
+          <button class="prev">&#10094;</button>
+          <button class="next">&#10095;</button>
         </div>
-    </div>
+      </div>
 
+      <!-- se añadio -->
 
-    
-
-
-    <!-- se añadio -->
-
-
-
-
-
-
-
-
-    <!--
+      <!--
       - CATEGORY
     -->
 
-<div class="category">
+      <div class="category">
+        <div class="container">
+          <div class="category-item-container has-scrollbar">
+            <div class="category-item">
+              <div class="category-img-box">
+                <img
+                  src="./assets/images/icons/brand-1.jpg"
+                  alt="dog food"
+                  width="30"
+                />
+              </div>
 
-  <div class="container">
+              <div class="category-content-box">
+                <div class="category-content-flex">
+                  <h3 class="category-item-title">Comida para perros</h3>
 
-    <div class="category-item-container has-scrollbar">
+                  <p class="category-item-amount">(53)</p>
+                </div>
 
-      <div class="category-item">
+                <a href="#" class="category-btn">Ver todo</a>
+              </div>
+            </div>
 
-        <div class="category-img-box">
-          <img src="./assets/images/icons/brand-1.jpg" alt="dog food" width="30">
-        </div>
+            <div class="category-item">
+              <div class="category-img-box">
+                <img
+                  src="./assets/images/icons/brand-2.jpg"
+                  alt="cat food"
+                  width="30"
+                />
+              </div>
 
-        <div class="category-content-box">
+              <div class="category-content-box">
+                <div class="category-content-flex">
+                  <h3 class="category-item-title">Comida para gatos</h3>
 
-          <div class="category-content-flex">
-            <h3 class="category-item-title">Comida para perros</h3>
+                  <p class="category-item-amount">(58)</p>
+                </div>
 
-            <p class="category-item-amount">(53)</p>
+                <a href="#" class="category-btn">Ver todo</a>
+              </div>
+            </div>
+
+            <div class="category-item">
+              <div class="category-img-box">
+                <img
+                  src="./assets/images/icons/brand-3.jpg"
+                  alt="bird food"
+                  width="30"
+                />
+              </div>
+
+              <div class="category-content-box">
+                <div class="category-content-flex">
+                  <h3 class="category-item-title">Comida para pájaros</h3>
+
+                  <p class="category-item-amount">(68)</p>
+                </div>
+
+                <a href="#" class="category-btn">Ver todo</a>
+              </div>
+            </div>
+
+            <div class="category-item">
+              <div class="category-img-box">
+                <img
+                  src="./assets/images/icons/brand-4.jpg"
+                  alt="fish food"
+                  width="30"
+                />
+              </div>
+
+              <div class="category-content-box">
+                <div class="category-content-flex">
+                  <h3 class="category-item-title">Comida para peces</h3>
+
+                  <p class="category-item-amount">(84)</p>
+                </div>
+
+                <a href="#" class="category-btn">Ver todo</a>
+              </div>
+            </div>
+
+            <div class="category-item">
+              <div class="category-img-box">
+                <img
+                  src="./assets/images/icons/brand-5.jpg"
+                  alt="pet toys"
+                  width="30"
+                />
+              </div>
+
+              <div class="category-content-box">
+                <div class="category-content-flex">
+                  <h3 class="category-item-title">Juguetes para mascotas</h3>
+
+                  <p class="category-item-amount">(35)</p>
+                </div>
+
+                <a href="#" class="category-btn">Ver todo</a>
+              </div>
+            </div>
+
+            <div class="category-item">
+              <div class="category-img-box">
+                <img
+                  src="./assets/images/icons/brand-4.jpg"
+                  alt="vet services"
+                  width="30"
+                />
+              </div>
+
+              <div class="category-content-box">
+                <div class="category-content-flex">
+                  <h3 class="category-item-title">Servicios veterinarios</h3>
+
+                  <p class="category-item-amount">(16)</p>
+                </div>
+
+                <a href="#" class="category-btn">Ver todo</a>
+              </div>
+            </div>
+
+            <div class="category-item">
+              <div class="category-img-box">
+                <img
+                  src="./assets/images/icons/brand-1.jpg"
+                  alt="pet supplies"
+                  width="30"
+                />
+              </div>
+
+              <div class="category-content-box">
+                <div class="category-content-flex">
+                  <h3 class="category-item-title">Suministros para mascotas</h3>
+
+                  <p class="category-item-amount">(27)</p>
+                </div>
+
+                <a href="#" class="category-btn">Ver todo</a>
+              </div>
+            </div>
+
+            <div class="category-item">
+              <div class="category-img-box">
+                <img
+                  src="./assets/images/icons/brand-5.jpg"
+                  alt="grooming"
+                  width="30"
+                />
+              </div>
+
+              <div class="category-content-box">
+                <div class="category-content-flex">
+                  <h3 class="category-item-title">Cuidado y aseo</h3>
+
+                  <p class="category-item-amount">(39)</p>
+                </div>
+
+                <a href="#" class="category-btn">Ver todo</a>
+              </div>
+            </div>
           </div>
-
-          <a href="#" class="category-btn">Ver todo</a>
-
         </div>
-
       </div>
 
-      <div class="category-item">
-
-        <div class="category-img-box">
-          <img src="./assets/images/icons/brand-2.jpg" alt="cat food" width="30">
-        </div>
-
-        <div class="category-content-box">
-
-          <div class="category-content-flex">
-            <h3 class="category-item-title">Comida para gatos</h3>
-
-            <p class="category-item-amount">(58)</p>
-          </div>
-
-          <a href="#" class="category-btn">Ver todo</a>
-
-        </div>
-
-      </div>
-
-      <div class="category-item">
-
-        <div class="category-img-box">
-          <img src="./assets/images/icons/brand-3.jpg" alt="bird food" width="30">
-        </div>
-
-        <div class="category-content-box">
-
-          <div class="category-content-flex">
-            <h3 class="category-item-title">Comida para pájaros</h3>
-
-            <p class="category-item-amount">(68)</p>
-          </div>
-
-          <a href="#" class="category-btn">Ver todo</a>
-
-        </div>
-
-      </div>
-
-      <div class="category-item">
-
-        <div class="category-img-box">
-          <img src="./assets/images/icons/brand-4.jpg" alt="fish food" width="30">
-        </div>
-
-        <div class="category-content-box">
-
-          <div class="category-content-flex">
-            <h3 class="category-item-title">Comida para peces</h3>
-
-            <p class="category-item-amount">(84)</p>
-          </div>
-
-          <a href="#" class="category-btn">Ver todo</a>
-
-        </div>
-
-      </div>
-
-      <div class="category-item">
-
-        <div class="category-img-box">
-          <img src="./assets/images/icons/brand-5.jpg" alt="pet toys" width="30">
-        </div>
-
-        <div class="category-content-box">
-
-          <div class="category-content-flex">
-            <h3 class="category-item-title">Juguetes para mascotas</h3>
-
-            <p class="category-item-amount">(35)</p>
-          </div>
-
-          <a href="#" class="category-btn">Ver todo</a>
-
-        </div>
-
-      </div>
-
-      <div class="category-item">
-
-        <div class="category-img-box">
-          <img src="./assets/images/icons/brand-4.jpg" alt="vet services" width="30">
-        </div>
-
-        <div class="category-content-box">
-
-          <div class="category-content-flex">
-            <h3 class="category-item-title">Servicios veterinarios</h3>
-
-            <p class="category-item-amount">(16)</p>
-          </div>
-
-          <a href="#" class="category-btn">Ver todo</a>
-
-        </div>
-
-      </div>
-
-      <div class="category-item">
-
-        <div class="category-img-box">
-          <img src="./assets/images/icons/brand-1.jpg" alt="pet supplies" width="30">
-        </div>
-
-        <div class="category-content-box">
-
-          <div class="category-content-flex">
-            <h3 class="category-item-title">Suministros para mascotas</h3>
-
-            <p class="category-item-amount">(27)</p>
-          </div>
-
-          <a href="#" class="category-btn">Ver todo</a>
-
-        </div>
-
-      </div>
-
-      <div class="category-item">
-
-        <div class="category-img-box">
-          <img src="./assets/images/icons/brand-5.jpg" alt="grooming" width="30">
-        </div>
-
-        <div class="category-content-box">
-
-          <div class="category-content-flex">
-            <h3 class="category-item-title">Cuidado y aseo</h3>
-
-            <p class="category-item-amount">(39)</p>
-          </div>
-
-          <a href="#" class="category-btn">Ver todo</a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
-
-
-
-    <!--
+      <!--
       - PRODUCT
     -->
 
-    <div class="product-container">
-
-      <div class="container">
-
-
-        <!--
+      <div class="product-container">
+        <div class="container">
+          <!--
           - SIDEBAR
         -->
 
-<div class="sidebar has-scrollbar" data-mobile-menu>
+          <div class="sidebar has-scrollbar" data-mobile-menu>
+            <div class="sidebar-category">
+              <div class="sidebar-top">
+                <h2 class="sidebar-title">Categoría</h2>
 
-  <div class="sidebar-category">
+                <button class="sidebar-close-btn" data-mobile-menu-close-btn>
+                  <ion-icon name="close-outline"></ion-icon>
+                </button>
+              </div>
 
-    <div class="sidebar-top">
-      <h2 class="sidebar-title">Categoría</h2>
+              <ul class="sidebar-menu-category-list">
+                <li class="sidebar-menu-category">
+                  <button class="sidebar-accordion-menu" data-accordion-btn>
+                    <div class="menu-title-flex">
+                      <img
+                        src="./assets/images/icons/brand-1.jpg"
+                        alt="perros"
+                        width="20"
+                        height="20"
+                        class="menu-title-img"
+                      />
 
-      <button class="sidebar-close-btn" data-mobile-menu-close-btn>
-        <ion-icon name="close-outline"></ion-icon>
-      </button>
-    </div>
+                      <p class="menu-title">Perros</p>
+                    </div>
 
-    <ul class="sidebar-menu-category-list">
+                    <div>
+                      <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                      <ion-icon
+                        name="remove-outline"
+                        class="remove-icon"
+                      ></ion-icon>
+                    </div>
+                  </button>
 
-      <li class="sidebar-menu-category">
+                  <ul class="sidebar-submenu-category-list" data-accordion>
+                    <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                        <p class="product-name">Alimento</p>
+                        <data value="300" class="stock" title="Available Stock"
+                          >300</data
+                        >
+                      </a>
+                    </li>
 
-        <button class="sidebar-accordion-menu" data-accordion-btn>
+                    <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                        <p class="product-name">Juguetes</p>
+                        <data value="60" class="stock" title="Available Stock"
+                          >60</data
+                        >
+                      </a>
+                    </li>
 
-          <div class="menu-title-flex">
-            <img src="./assets/images/icons/brand-1.jpg" alt="perros" width="20" height="20" class="menu-title-img">
+                    <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                        <p class="product-name">Accesorios</p>
+                        <data value="50" class="stock" title="Available Stock"
+                          >50</data
+                        >
+                      </a>
+                    </li>
 
-            <p class="menu-title">Perros</p>
+                    <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                        <p class="product-name">Ropa</p>
+                        <data value="87" class="stock" title="Available Stock"
+                          >87</data
+                        >
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="sidebar-menu-category">
+                  <button class="sidebar-accordion-menu" data-accordion-btn>
+                    <div class="menu-title-flex">
+                      <img
+                        src="./assets/images/icons/brand-2.jpg"
+                        alt="gatos"
+                        class="menu-title-img"
+                        width="20"
+                        height="20"
+                      />
+
+                      <p class="menu-title">Gatos</p>
+                    </div>
+
+                    <div>
+                      <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                      <ion-icon
+                        name="remove-outline"
+                        class="remove-icon"
+                      ></ion-icon>
+                    </div>
+                  </button>
+
+                  <ul class="sidebar-submenu-category-list" data-accordion>
+                    <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                        <p class="product-name">Alimento</p>
+                        <data value="45" class="stock" title="Available Stock"
+                          >45</data
+                        >
+                      </a>
+                    </li>
+
+                    <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                        <p class="product-name">Juguetes</p>
+                        <data value="75" class="stock" title="Available Stock"
+                          >75</data
+                        >
+                      </a>
+                    </li>
+
+                    <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                        <p class="product-name">Accesorios</p>
+                        <data value="35" class="stock" title="Available Stock"
+                          >35</data
+                        >
+                      </a>
+                    </li>
+
+                    <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                        <p class="product-name">Ropa</p>
+                        <data value="26" class="stock" title="Available Stock"
+                          >26</data
+                        >
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="sidebar-menu-category">
+                  <button class="sidebar-accordion-menu" data-accordion-btn>
+                    <div class="menu-title-flex">
+                      <img
+                        src="./assets/images/icons/brand-3.jpg"
+                        alt="aves"
+                        class="menu-title-img"
+                        width="20"
+                        height="20"
+                      />
+
+                      <p class="menu-title">Aves</p>
+                    </div>
+
+                    <div>
+                      <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                      <ion-icon
+                        name="remove-outline"
+                        class="remove-icon"
+                      ></ion-icon>
+                    </div>
+                  </button>
+
+                  <ul class="sidebar-submenu-category-list" data-accordion>
+                    <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                        <p class="product-name">Alimento</p>
+                        <data value="46" class="stock" title="Available Stock"
+                          >46</data
+                        >
+                      </a>
+                    </li>
+
+                    <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                        <p class="product-name">Jaulas</p>
+                        <data value="73" class="stock" title="Available Stock"
+                          >73</data
+                        >
+                      </a>
+                    </li>
+
+                    <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                        <p class="product-name">Juguetes</p>
+                        <data value="61" class="stock" title="Available Stock"
+                          >61</data
+                        >
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="sidebar-menu-category">
+                  <button class="sidebar-accordion-menu" data-accordion-btn>
+                    <div class="menu-title-flex">
+                      <img
+                        src="./assets/images/icons/brand-5.jpg"
+                        alt="peces"
+                        class="menu-title-img"
+                        width="20"
+                        height="20"
+                      />
+
+                      <p class="menu-title">Peces</p>
+                    </div>
+
+                    <div>
+                      <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                      <ion-icon
+                        name="remove-outline"
+                        class="remove-icon"
+                      ></ion-icon>
+                    </div>
+                  </button>
+
+                  <ul class="sidebar-submenu-category-list" data-accordion>
+                    <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                        <p class="product-name">Alimento</p>
+                        <data value="12" class="stock" title="Available Stock"
+                          >12 pcs</data
+                        >
+                      </a>
+                    </li>
+
+                    <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                        <p class="product-name">Acuarios</p>
+                        <data value="60" class="stock" title="Available Stock"
+                          >60 pcs</data
+                        >
+                      </a>
+                    </li>
+
+                    <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                        <p class="product-name">Decoraciones</p>
+                        <data value="50" class="stock" title="Available Stock"
+                          >50 pcs</data
+                        >
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="sidebar-menu-category">
+                  <button class="sidebar-accordion-menu" data-accordion-btn>
+                    <div class="menu-title-flex">
+                      <img
+                        src="./assets/images/icons/brand-4.jpg"
+                        alt="roedores"
+                        class="menu-title-img"
+                        width="20"
+                        height="20"
+                      />
+
+                      <p class="menu-title">Roedores</p>
+                    </div>
+
+                    <div>
+                      <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                      <ion-icon
+                        name="remove-outline"
+                        class="remove-icon"
+                      ></ion-icon>
+                    </div>
+                  </button>
+
+                  <ul class="sidebar-submenu-category-list" data-accordion>
+                    <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                        <p class="product-name">Alimento</p>
+                        <data value="68" class="stock" title="Available Stock"
+                          >68</data
+                        >
+                      </a>
+                    </li>
+
+                    <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                        <p class="product-name">Jaulas</p>
+                        <data value="46" class="stock" title="Available Stock"
+                          >46</data
+                        >
+                      </a>
+                    </li>
+
+                    <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                        <p class="product-name">Juguetes</p>
+                        <data value="79" class="stock" title="Available Stock"
+                          >79</data
+                        >
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div class="product-showcase">
+              <h3 class="showcase-heading">Productos Veterinarios</h3>
+
+              <div class="showcase-wrapper">
+                <div class="showcase-container">
+                  <div class="showcase">
+                    <a href="#" class="showcase-img-box">
+                      <img
+                        src="./assets/images/products/1.jpg"
+                        alt="Purina Dog Chow"
+                        width="75"
+                        height="75"
+                        class="showcase-img"
+                      />
+                    </a>
+
+                    <div class="showcase-content">
+                      <a href="#">
+                        <h4 class="showcase-title">Purina Dog Chow</h4>
+                      </a>
+
+                      <a href="#" class="showcase-category"
+                        >Alimento para perros</a
+                      >
+
+                      <div class="price-box">
+                        <p class="price">Bs.12.99</p>
+                        <del>Bs. 15.99</del>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="showcase">
+                    <a href="#" class="showcase-img-box">
+                      <img
+                        src="./assets/images/products/2.jpg"
+                        alt="Whiskas"
+                        class="showcase-img"
+                        width="75"
+                        height="75"
+                      />
+                    </a>
+
+                    <div class="showcase-content">
+                      <a href="#">
+                        <h4 class="showcase-title">Whiskas</h4>
+                      </a>
+
+                      <a href="#" class="showcase-category"
+                        >Alimento para gatos</a
+                      >
+
+                      <div class="price-box">
+                        <p class="price">Bs.10.99</p>
+                        <del>Bs.13.99</del>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="showcase">
+                    <a href="#" class="showcase-img-box">
+                      <img
+                        src="./assets/images/products/4.jpg"
+                        alt="Antiparasitario para perros"
+                        class="showcase-img"
+                        width="75"
+                        height="75"
+                      />
+                    </a>
+
+                    <div class="showcase-content">
+                      <a href="#">
+                        <h4 class="showcase-title">
+                          Antiparasitario para perros
+                        </h4>
+                      </a>
+
+                      <a href="#" class="showcase-category"
+                        >Cuidado de mascotas</a
+                      >
+
+                      <div class="price-box">
+                        <p class="price">Bs.19.99</p>
+                        <del>Bs.24.99</del>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="showcase">
+                    <a href="#" class="showcase-img-box">
+                      <img
+                        src="./assets/images/products/5.jpg"
+                        alt="Kit de higiene dental para gatos"
+                        class="showcase-img"
+                        width="75"
+                        height="75"
+                      />
+                    </a>
+
+                    <div class="showcase-content">
+                      <a href="#">
+                        <h4 class="showcase-title">
+                          Kit de higiene dental para gatos
+                        </h4>
+                      </a>
+
+                      <a href="#" class="showcase-category">Cuidado bucal</a>
+
+                      <div class="price-box">
+                        <p class="price">Bs.15.99</p>
+                        <del>Bs.19.99</del>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div>
-            <ion-icon name="add-outline" class="add-icon"></ion-icon>
-            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-          </div>
-
-        </button>
-
-        <ul class="sidebar-submenu-category-list" data-accordion>
-
-          <li class="sidebar-submenu-category">
-            <a href="#" class="sidebar-submenu-title">
-              <p class="product-name">Alimento</p>
-              <data value="300" class="stock" title="Available Stock">300</data>
-            </a>
-          </li>
-
-          <li class="sidebar-submenu-category">
-            <a href="#" class="sidebar-submenu-title">
-              <p class="product-name">Juguetes</p>
-              <data value="60" class="stock" title="Available Stock">60</data>
-            </a>
-          </li>
-
-          <li class="sidebar-submenu-category">
-            <a href="#" class="sidebar-submenu-title">
-              <p class="product-name">Accesorios</p>
-              <data value="50" class="stock" title="Available Stock">50</data>
-            </a>
-          </li>
-
-          <li class="sidebar-submenu-category">
-            <a href="#" class="sidebar-submenu-title">
-              <p class="product-name">Ropa</p>
-              <data value="87" class="stock" title="Available Stock">87</data>
-            </a>
-          </li>
-
-        </ul>
-
-      </li>
-
-      <li class="sidebar-menu-category">
-
-        <button class="sidebar-accordion-menu" data-accordion-btn>
-
-          <div class="menu-title-flex">
-            <img src="./assets/images/icons/brand-2.jpg" alt="gatos" class="menu-title-img" width="20" height="20">
-
-            <p class="menu-title">Gatos</p>
-          </div>
-
-          <div>
-            <ion-icon name="add-outline" class="add-icon"></ion-icon>
-            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-          </div>
-
-        </button>
-
-        <ul class="sidebar-submenu-category-list" data-accordion>
-
-          <li class="sidebar-submenu-category">
-            <a href="#" class="sidebar-submenu-title">
-              <p class="product-name">Alimento</p>
-              <data value="45" class="stock" title="Available Stock">45</data>
-            </a>
-          </li>
-
-          <li class="sidebar-submenu-category">
-            <a href="#" class="sidebar-submenu-title">
-              <p class="product-name">Juguetes</p>
-              <data value="75" class="stock" title="Available Stock">75</data>
-            </a>
-          </li>
-
-          <li class="sidebar-submenu-category">
-            <a href="#" class="sidebar-submenu-title">
-              <p class="product-name">Accesorios</p>
-              <data value="35" class="stock" title="Available Stock">35</data>
-            </a>
-          </li>
-
-          <li class="sidebar-submenu-category">
-            <a href="#" class="sidebar-submenu-title">
-              <p class="product-name">Ropa</p>
-              <data value="26" class="stock" title="Available Stock">26</data>
-            </a>
-          </li>
-
-        </ul>
-
-      </li>
-
-      <li class="sidebar-menu-category">
-
-        <button class="sidebar-accordion-menu" data-accordion-btn>
-
-          <div class="menu-title-flex">
-            <img src="./assets/images/icons/brand-3.jpg" alt="aves" class="menu-title-img" width="20" height="20">
-
-            <p class="menu-title">Aves</p>
-          </div>
-
-          <div>
-            <ion-icon name="add-outline" class="add-icon"></ion-icon>
-            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-          </div>
-
-        </button>
-
-        <ul class="sidebar-submenu-category-list" data-accordion>
-
-          <li class="sidebar-submenu-category">
-            <a href="#" class="sidebar-submenu-title">
-              <p class="product-name">Alimento</p>
-              <data value="46" class="stock" title="Available Stock">46</data>
-            </a>
-          </li>
-
-          <li class="sidebar-submenu-category">
-            <a href="#" class="sidebar-submenu-title">
-              <p class="product-name">Jaulas</p>
-              <data value="73" class="stock" title="Available Stock">73</data>
-            </a>
-          </li>
-
-          <li class="sidebar-submenu-category">
-            <a href="#" class="sidebar-submenu-title">
-              <p class="product-name">Juguetes</p>
-              <data value="61" class="stock" title="Available Stock">61</data>
-            </a>
-          </li>
-
-        </ul>
-
-      </li>
-
-      <li class="sidebar-menu-category">
-
-        <button class="sidebar-accordion-menu" data-accordion-btn>
-
-          <div class="menu-title-flex">
-            <img src="./assets/images/icons/brand-5.jpg" alt="peces" class="menu-title-img" width="20" height="20">
-
-            <p class="menu-title">Peces</p>
-          </div>
-
-          <div>
-            <ion-icon name="add-outline" class="add-icon"></ion-icon>
-            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-          </div>
-
-        </button>
-
-        <ul class="sidebar-submenu-category-list" data-accordion>
-
-          <li class="sidebar-submenu-category">
-            <a href="#" class="sidebar-submenu-title">
-              <p class="product-name">Alimento</p>
-              <data value="12" class="stock" title="Available Stock">12 pcs</data>
-            </a>
-          </li>
-
-          <li class="sidebar-submenu-category">
-            <a href="#" class="sidebar-submenu-title">
-              <p class="product-name">Acuarios</p>
-              <data value="60" class="stock" title="Available Stock">60 pcs</data>
-            </a>
-          </li>
-
-          <li class="sidebar-submenu-category">
-            <a href="#" class="sidebar-submenu-title">
-              <p class="product-name">Decoraciones</p>
-              <data value="50" class="stock" title="Available Stock">50 pcs</data>
-            </a>
-          </li>
-
-        </ul>
-
-      </li>
-
-      <li class="sidebar-menu-category">
-
-        <button class="sidebar-accordion-menu" data-accordion-btn>
-
-          <div class="menu-title-flex">
-            <img src="./assets/images/icons/brand-4.jpg" alt="roedores" class="menu-title-img" width="20" height="20">
-
-            <p class="menu-title">Roedores</p>
-          </div>
-
-          <div>
-            <ion-icon name="add-outline" class="add-icon"></ion-icon>
-            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-          </div>
-
-        </button>
-
-        <ul class="sidebar-submenu-category-list" data-accordion>
-
-          <li class="sidebar-submenu-category">
-            <a href="#" class="sidebar-submenu-title">
-              <p class="product-name">Alimento</p>
-              <data value="68" class="stock" title="Available Stock">68</data>
-            </a>
-          </li>
-
-          <li class="sidebar-submenu-category">
-            <a href="#" class="sidebar-submenu-title">
-              <p class="product-name">Jaulas</p>
-              <data value="46" class="stock" title="Available Stock">46</data>
-            </a>
-          </li>
-
-          <li class="sidebar-submenu-category">
-            <a href="#" class="sidebar-submenu-title">
-              <p class="product-name">Juguetes</p>
-              <data value="79" class="stock" title="Available Stock">79</data>
-            </a>
-          </li>
-
-        </ul>
-
-      </li>
-
-    </ul>
-
-  </div>
-
-<div class="product-showcase">
-
-  <h3 class="showcase-heading">Productos Veterinarios</h3>
-
-  <div class="showcase-wrapper">
-
-    <div class="showcase-container">
-
-      <div class="showcase">
-
-        <a href="#" class="showcase-img-box">
-          <img src="./assets/images/products/1.jpg" alt="Purina Dog Chow" width="75" height="75" class="showcase-img">
-        </a>
-
-        <div class="showcase-content">
-
-          <a href="#">
-            <h4 class="showcase-title">Purina Dog Chow</h4>
-          </a>
-
-          <a href="#" class="showcase-category">Alimento para perros</a>
-
-          <div class="price-box">
-            <p class="price">Bs.12.99</p>
-            <del>Bs. 15.99</del>
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="showcase">
-
-        <a href="#" class="showcase-img-box">
-          <img src="./assets/images/products/2.jpg" alt="Whiskas" class="showcase-img" width="75" height="75">
-        </a>
-
-        <div class="showcase-content">
-
-          <a href="#">
-            <h4 class="showcase-title">Whiskas</h4>
-          </a>
-
-          <a href="#" class="showcase-category">Alimento para gatos</a>
-
-          <div class="price-box">
-            <p class="price">Bs.10.99</p>
-            <del>Bs.13.99</del>
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="showcase">
-
-        <a href="#" class="showcase-img-box">
-          <img src="./assets/images/products/4.jpg" alt="Antiparasitario para perros" class="showcase-img" width="75" height="75">
-        </a>
-
-        <div class="showcase-content">
-
-          <a href="#">
-            <h4 class="showcase-title">Antiparasitario para perros</h4>
-          </a>
-
-          <a href="#" class="showcase-category">Cuidado de mascotas</a>
-
-          <div class="price-box">
-            <p class="price">Bs.19.99</p>
-            <del>Bs.24.99</del>
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="showcase">
-
-        <a href="#" class="showcase-img-box">
-          <img src="./assets/images/products/5.jpg" alt="Kit de higiene dental para gatos" class="showcase-img" width="75" height="75">
-        </a>
-
-        <div class="showcase-content">
-
-          <a href="#">
-            <h4 class="showcase-title">Kit de higiene dental para gatos</h4>
-          </a>
-
-          <a href="#" class="showcase-category">Cuidado bucal</a>
-
-          <div class="price-box">
-            <p class="price">Bs.15.99</p>
-            <del>Bs.19.99</del>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-</div>
-
-
-
-
-        <div class="product-box">
-
-
-
-
-          <!--
+          <div class="product-box">
+            <!--
             - PRODUCT GRID
           -->
-          <div class="product-main">
+            <div class="product-main">
+              <div>
+                <h2 class="h2 section-title">
+                  <span class="span">¡Encuentra todo lo que tu mascota </span>
+                  necesita aquí!
+                </h2>
 
-
-<div>
-
-                    <h2 class="h2 section-title">
-            <span class="span">¡Encuentra todo lo que tu mascota </span> necesita aquí!
-          </h2>
-  
-  <div class="grid-prod">
-    <!-- Grid para la imagen grande -->
-    <div class="grid-large" >
-      <div class="large-image">
-        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/3bbf7a37-bf1b-45e5-abb5-ada61081c7b9___8a5a3abbb07344e55f1ceffe52d1ce5f.png" alt="Perros">
-      </div>
-    </div>
-
-    <div class="grid-small">
-      <div class="circular-image">
-        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/52b37c62-8bc0-4fec-949f-b3cce4a7439b___5ee2fd8cb4bcc57358325860678bc564.png" alt="Comida seca">
-        <p>Comida <br> seca</p>
-      </div>
-      <div class="circular-image">
-        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/3cdb5651-37d6-4c56-9e83-e4b7fd852a28___220f8fda8b30479bc8647c92409b8fd4.png" alt="Antipulgas">
-        <p>Antipulgas</p>
-      </div>
-      <div class="circular-image">
-        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/8133e893-4ab0-4cbf-af51-f480e1fa33db___b3f31603bcd2d51ab2b4860dfd928d7a.png" alt="Medicamentos">
-        <p>Medicamentos</p>
-      </div>
-      <div class="circular-image">
-        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/e2f89f7c-02bb-4e1d-bba8-dbf56cdfb82d___6d9a74fbda1e2a586f3aa6a43ddfca99.png" alt="Tapetes higiénicos">
-        <p>Tapetes <br> higiénicos</p>
-      </div>
-      <div class="circular-image">
-        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/73490a8c-bae3-40a3-9656-419921705cac___b02fd0dfc0d9bd69827345c1ea99718c.png" alt="Comida húmeda">
-        <p>Comida <br> húmeda</p>
-      </div>
-      <div class="circular-image">
-        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/edc80b37-4e9c-46cd-aec9-661dd0162522___20d19a69fb90e7ad5bed72a0b5111711.png" alt="Juguetes">
-        <p>Juguetes</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid-prod mt-4">
-    <!-- Grid para la imagen grande -->
-    <div class="grid-large">
-      <div class="large-image">
-        <img src="assets/images/gato.png" alt="Gatos">
-      </div>
-    </div>
-
-    <div class="grid-small">
-      <div class="circular-image">
-        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/52b37c62-8bc0-4fec-949f-b3cce4a7439b___5ee2fd8cb4bcc57358325860678bc564.png" alt="Comida seca">
-        <p>Comida <br> seca</p>
-      </div>
-      <div class="circular-image">
-        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/3cdb5651-37d6-4c56-9e83-e4b7fd852a28___220f8fda8b30479bc8647c92409b8fd4.png" alt="Antipulgas">
-        <p>Antipulgas</p>
-      </div>
-      <div class="circular-image">
-        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/8133e893-4ab0-4cbf-af51-f480e1fa33db___b3f31603bcd2d51ab2b4860dfd928d7a.png" alt="Medicamentos">
-        <p>Medicamentos</p>
-      </div>
-      <div class="circular-image">
-        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/e2f89f7c-02bb-4e1d-bba8-dbf56cdfb82d___6d9a74fbda1e2a586f3aa6a43ddfca99.png" alt="Tapetes higiénicos">
-        <p>Tapetes <br> higiénicos</p>
-      </div>
-      <div class="circular-image">
-        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/73490a8c-bae3-40a3-9656-419921705cac___b02fd0dfc0d9bd69827345c1ea99718c.png" alt="Comida húmeda">
-        <p>Comida <br> húmeda</p>
-      </div>
-      <div class="circular-image">
-        <img src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/edc80b37-4e9c-46cd-aec9-661dd0162522___20d19a69fb90e7ad5bed72a0b5111711.png" alt="Juguetes">
-        <p>Juguetes</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-      
-
-      <section class="section product" id="shop" aria-label="product">
-
-<h2 class="h2 section-title">
-  <span class="span">Los favoritos de los </span> de tus mascotas
-</h2>
-
-<div class="carousel">
-  <button class="carousel-btn prev-btn">&lt;</button>
-  <div class="cards-container" style="margin: 5%;">
-    <div class="card-c custom-card">
-              <div class="product-card">
-
-                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
-                  <img src="./assets/images/product-1.jpg" width="360" height="360" loading="lazy"
-                    alt="Commodo leo sed porta" class="img-cover default">
-                  <img src="./assets/images/product-1_0.jpg" width="360" height="360" loading="lazy"
-                    alt="Commodo leo sed porta" class="img-cover hover">
-
-                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
-                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
-                  </button>
-                </div>
-
-                <div class="card-content">
-
-                  <div class="wrapper">
-                    <div class="rating-wrapper">
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                <div class="grid-prod">
+                  <!-- Grid para la imagen grande -->
+                  <div class="grid-large">
+                    <div class="large-image">
+                      <img
+                        src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/3bbf7a37-bf1b-45e5-abb5-ada61081c7b9___8a5a3abbb07344e55f1ceffe52d1ce5f.png"
+                        alt="Perros"
+                      />
                     </div>
-
-                    <span class="span">(1)</span>
                   </div>
 
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Commodo leo sed porta</a>
-                  </h3>
+                  <div class="grid-small">
+                    <div class="circular-image">
+                      <img
+                        src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/52b37c62-8bc0-4fec-949f-b3cce4a7439b___5ee2fd8cb4bcc57358325860678bc564.png"
+                        alt="Comida seca"
+                      />
+                      <p>
+                        Comida <br />
+                        seca
+                      </p>
+                    </div>
+                    <div class="circular-image">
+                      <img
+                        src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/3cdb5651-37d6-4c56-9e83-e4b7fd852a28___220f8fda8b30479bc8647c92409b8fd4.png"
+                        alt="Antipulgas"
+                      />
+                      <p>Antipulgas</p>
+                    </div>
+                    <div class="circular-image">
+                      <img
+                        src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/8133e893-4ab0-4cbf-af51-f480e1fa33db___b3f31603bcd2d51ab2b4860dfd928d7a.png"
+                        alt="Medicamentos"
+                      />
+                      <p>Medicamentos</p>
+                    </div>
+                    <div class="circular-image">
+                      <img
+                        src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/e2f89f7c-02bb-4e1d-bba8-dbf56cdfb82d___6d9a74fbda1e2a586f3aa6a43ddfca99.png"
+                        alt="Tapetes higiénicos"
+                      />
+                      <p>
+                        Tapetes <br />
+                        higiénicos
+                      </p>
+                    </div>
+                    <div class="circular-image">
+                      <img
+                        src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/73490a8c-bae3-40a3-9656-419921705cac___b02fd0dfc0d9bd69827345c1ea99718c.png"
+                        alt="Comida húmeda"
+                      />
+                      <p>
+                        Comida <br />
+                        húmeda
+                      </p>
+                    </div>
+                    <div class="circular-image">
+                      <img
+                        src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/edc80b37-4e9c-46cd-aec9-661dd0162522___20d19a69fb90e7ad5bed72a0b5111711.png"
+                        alt="Juguetes"
+                      />
+                      <p>Juguetes</p>
+                    </div>
+                  </div>
+                </div>
 
-                  <data class="card-price" value="15">Bs.15.00</data>
-                  <a href="#" class="banner-btn" style="width: 100%;">Comprar</a>
+                <div class="grid-prod mt-4">
+                  <!-- Grid para la imagen grande -->
+                  <div class="grid-large">
+                    <div class="large-image">
+                      <img src="assets/images/gato.png" alt="Gatos" />
+                    </div>
+                  </div>
+
+                  <div class="grid-small">
+                    <div class="circular-image">
+                      <img
+                        src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/52b37c62-8bc0-4fec-949f-b3cce4a7439b___5ee2fd8cb4bcc57358325860678bc564.png"
+                        alt="Comida seca"
+                      />
+                      <p>
+                        Comida <br />
+                        seca
+                      </p>
+                    </div>
+                    <div class="circular-image">
+                      <img
+                        src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/3cdb5651-37d6-4c56-9e83-e4b7fd852a28___220f8fda8b30479bc8647c92409b8fd4.png"
+                        alt="Antipulgas"
+                      />
+                      <p>Antipulgas</p>
+                    </div>
+                    <div class="circular-image">
+                      <img
+                        src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/8133e893-4ab0-4cbf-af51-f480e1fa33db___b3f31603bcd2d51ab2b4860dfd928d7a.png"
+                        alt="Medicamentos"
+                      />
+                      <p>Medicamentos</p>
+                    </div>
+                    <div class="circular-image">
+                      <img
+                        src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/e2f89f7c-02bb-4e1d-bba8-dbf56cdfb82d___6d9a74fbda1e2a586f3aa6a43ddfca99.png"
+                        alt="Tapetes higiénicos"
+                      />
+                      <p>
+                        Tapetes <br />
+                        higiénicos
+                      </p>
+                    </div>
+                    <div class="circular-image">
+                      <img
+                        src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/73490a8c-bae3-40a3-9656-419921705cac___b02fd0dfc0d9bd69827345c1ea99718c.png"
+                        alt="Comida húmeda"
+                      />
+                      <p>
+                        Comida <br />
+                        húmeda
+                      </p>
+                    </div>
+                    <div class="circular-image">
+                      <img
+                        src="https://tudodebicho.vtexassets.com/assets/vtex.file-manager-graphql/images/edc80b37-4e9c-46cd-aec9-661dd0162522___20d19a69fb90e7ad5bed72a0b5111711.png"
+                        alt="Juguetes"
+                      />
+                      <p>Juguetes</p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-    </div>
-    <div class="card-c custom-card">
-              <div class="product-card">
+              <section class="section product" id="shop" aria-label="product">
+                <h2 class="h2 section-title">
+                  <span class="span">Los favoritos de los </span> de tus
+                  mascotas
+                </h2>
 
-                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
-                  <img src="./assets/images/product-1.jpg" width="360" height="360" loading="lazy"
-                    alt="Commodo leo sed porta" class="img-cover default">
-                  <img src="./assets/images/product-1_0.jpg" width="360" height="360" loading="lazy"
-                    alt="Commodo leo sed porta" class="img-cover hover">
+                <div class="carousel">
+                  <button class="carousel-btn prev-btn">&lt;</button>
+                  <div class="cards-container" style="margin: 5%">
+                    <div class="card-c custom-card">
+                      <div class="product-card">
+                        <div
+                          class="card-banner img-holder"
+                          style="--width: 360; --height: 360"
+                        >
+                          <img
+                            src="./assets/images/product-1.jpg"
+                            width="360"
+                            height="360"
+                            loading="lazy"
+                            alt="Commodo leo sed porta"
+                            class="img-cover default"
+                          />
+                          <img
+                            src="./assets/images/product-1_0.jpg"
+                            width="360"
+                            height="360"
+                            loading="lazy"
+                            alt="Commodo leo sed porta"
+                            class="img-cover hover"
+                          />
 
-                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
-                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
-                  </button>
-                </div>
+                          <button
+                            class="card-action-btn"
+                            aria-label="add to card"
+                            title="Add To Card"
+                          >
+                            <ion-icon
+                              name="bag-add-outline"
+                              aria-hidden="true"
+                            ></ion-icon>
+                          </button>
+                        </div>
 
-                <div class="card-content">
+                        <div class="card-content">
+                          <div class="wrapper">
+                            <div class="rating-wrapper">
+                              <ion-icon
+                                name="star"
+                                aria-hidden="true"
+                              ></ion-icon>
+                              <ion-icon
+                                name="star"
+                                aria-hidden="true"
+                              ></ion-icon>
+                              <ion-icon
+                                name="star"
+                                aria-hidden="true"
+                              ></ion-icon>
+                              <ion-icon
+                                name="star"
+                                aria-hidden="true"
+                              ></ion-icon>
+                              <ion-icon
+                                name="star"
+                                aria-hidden="true"
+                              ></ion-icon>
+                            </div>
 
-                  <div class="wrapper">
-                    <div class="rating-wrapper">
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                            <span class="span">(1)</span>
+                          </div>
+
+                          <h3 class="h3">
+                            <a href="#" class="card-title"
+                              >Commodo leo sed porta</a
+                            >
+                          </h3>
+
+                          <data class="card-price" value="15">Bs.15.00</data>
+                          <a href="#" class="banner-btn" style="width: 100%"
+                            >Comprar</a
+                          >
+                        </div>
+                      </div>
                     </div>
+                    <div class="card-c custom-card">
+                      <div class="product-card">
+                        <div
+                          class="card-banner img-holder"
+                          style="--width: 360; --height: 360"
+                        >
+                          <img
+                            src="./assets/images/product-1.jpg"
+                            width="360"
+                            height="360"
+                            loading="lazy"
+                            alt="Commodo leo sed porta"
+                            class="img-cover default"
+                          />
+                          <img
+                            src="./assets/images/product-1_0.jpg"
+                            width="360"
+                            height="360"
+                            loading="lazy"
+                            alt="Commodo leo sed porta"
+                            class="img-cover hover"
+                          />
 
-                    <span class="span">(1)</span>
-                  </div>
+                          <button
+                            class="card-action-btn"
+                            aria-label="add to card"
+                            title="Add To Card"
+                          >
+                            <ion-icon
+                              name="bag-add-outline"
+                              aria-hidden="true"
+                            ></ion-icon>
+                          </button>
+                        </div>
 
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Commodo leo sed porta</a>
-                  </h3>
+                        <div class="card-content">
+                          <div class="wrapper">
+                            <div class="rating-wrapper">
+                              <ion-icon
+                                name="star"
+                                aria-hidden="true"
+                              ></ion-icon>
+                              <ion-icon
+                                name="star"
+                                aria-hidden="true"
+                              ></ion-icon>
+                              <ion-icon
+                                name="star"
+                                aria-hidden="true"
+                              ></ion-icon>
+                              <ion-icon
+                                name="star"
+                                aria-hidden="true"
+                              ></ion-icon>
+                              <ion-icon
+                                name="star"
+                                aria-hidden="true"
+                              ></ion-icon>
+                            </div>
 
-                  <data class="card-price" value="15">Bs.15.00</data>
-                  <a href="#" class="banner-btn" style="width: 100%;">Comprar</a>
-                </div>
-              </div>
+                            <span class="span">(1)</span>
+                          </div>
 
-    </div>
-    <div class="card-c custom-card">
-              <div class="product-card">
+                          <h3 class="h3">
+                            <a href="#" class="card-title"
+                              >Commodo leo sed porta</a
+                            >
+                          </h3>
 
-                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
-                  <img src="./assets/images/product-1.jpg" width="360" height="360" loading="lazy"
-                    alt="Commodo leo sed porta" class="img-cover default">
-                  <img src="./assets/images/product-1_0.jpg" width="360" height="360" loading="lazy"
-                    alt="Commodo leo sed porta" class="img-cover hover">
-
-                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
-                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
-                  </button>
-                </div>
-
-                <div class="card-content">
-
-                  <div class="wrapper">
-                    <div class="rating-wrapper">
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
-                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                          <data class="card-price" value="15">Bs.15.00</data>
+                          <a href="#" class="banner-btn" style="width: 100%"
+                            >Comprar</a
+                          >
+                        </div>
+                      </div>
                     </div>
+                    <div class="card-c custom-card">
+                      <div class="product-card">
+                        <div
+                          class="card-banner img-holder"
+                          style="--width: 360; --height: 360"
+                        >
+                          <img
+                            src="./assets/images/product-1.jpg"
+                            width="360"
+                            height="360"
+                            loading="lazy"
+                            alt="Commodo leo sed porta"
+                            class="img-cover default"
+                          />
+                          <img
+                            src="./assets/images/product-1_0.jpg"
+                            width="360"
+                            height="360"
+                            loading="lazy"
+                            alt="Commodo leo sed porta"
+                            class="img-cover hover"
+                          />
 
-                    <span class="span">(1)</span>
+                          <button
+                            class="card-action-btn"
+                            aria-label="add to card"
+                            title="Add To Card"
+                          >
+                            <ion-icon
+                              name="bag-add-outline"
+                              aria-hidden="true"
+                            ></ion-icon>
+                          </button>
+                        </div>
+
+                        <div class="card-content">
+                          <div class="wrapper">
+                            <div class="rating-wrapper">
+                              <ion-icon
+                                name="star"
+                                aria-hidden="true"
+                              ></ion-icon>
+                              <ion-icon
+                                name="star"
+                                aria-hidden="true"
+                              ></ion-icon>
+                              <ion-icon
+                                name="star"
+                                aria-hidden="true"
+                              ></ion-icon>
+                              <ion-icon
+                                name="star"
+                                aria-hidden="true"
+                              ></ion-icon>
+                              <ion-icon
+                                name="star"
+                                aria-hidden="true"
+                              ></ion-icon>
+                            </div>
+
+                            <span class="span">(1)</span>
+                          </div>
+
+                          <h3 class="h3">
+                            <a href="#" class="card-title"
+                              >Commodo leo sed porta</a
+                            >
+                          </h3>
+
+                          <data class="card-price" value="15">Bs.15.00</data>
+                          <a href="#" class="banner-btn" style="width: 100%"
+                            >Comprar</a
+                          >
+                        </div>
+                      </div>
+                    </div>
                   </div>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Commodo leo sed porta</a>
-                  </h3>
-
-                  <data class="card-price" value="15">Bs.15.00</data>
-                  <a href="#" class="banner-btn" style="width: 100%;">Comprar</a>
+                  <button class="carousel-btn next-btn">&gt;</button>
                 </div>
-              </div>
-    </div>
-  </div>
-  <button class="carousel-btn next-btn">&gt;</button>
-</div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-  const prevBtn = document.querySelector('.prev-btn');
-  const nextBtn = document.querySelector('.next-btn');
-  const cardsContainer = document.querySelector('.cards-container');
-  const cards = document.querySelectorAll('.card-c');
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    const prevBtn = document.querySelector(".prev-btn");
+                    const nextBtn = document.querySelector(".next-btn");
+                    const cardsContainer =
+                      document.querySelector(".cards-container");
+                    const cards = document.querySelectorAll(".card-c");
 
-  let index = 0;
-  const cardWidth = cards[0].clientWidth;
+                    let index = 0;
+                    const cardWidth = cards[0].clientWidth;
 
-  function showSlide(index) {
-    cardsContainer.style.transform = `translateX(${-index * cardWidth}px)`;
-  }
+                    function showSlide(index) {
+                      cardsContainer.style.transform = `translateX(${
+                        -index * cardWidth
+                      }px)`;
+                    }
 
-  prevBtn.addEventListener('click', () => {
-    index = (index > 0) ? index - 1 : cards.length - 1;
-    showSlide(index);
-  });
+                    prevBtn.addEventListener("click", () => {
+                      index = index > 0 ? index - 1 : cards.length - 1;
+                      showSlide(index);
+                    });
 
-  nextBtn.addEventListener('click', () => {
-    index = (index < cards.length - 1) ? index + 1 : 0;
-    showSlide(index);
-  });
+                    nextBtn.addEventListener("click", () => {
+                      index = index < cards.length - 1 ? index + 1 : 0;
+                      showSlide(index);
+                    });
 
-  // Opcional: Cambio automático de slides
-  setInterval(() => {
-    nextBtn.click();
-  }, 3000); // Cambia la imagen cada 3 segundos
-});
+                    // Opcional: Cambio automático de slides
+                    setInterval(() => {
+                      nextBtn.click();
+                    }, 3000); // Cambia la imagen cada 3 segundos
+                  });
+                </script>
 
-</script>
-
-
-
-<br>
-          <!--
+                <br />
+                <!--
             - PRODUCT FEATURED
           -->
 
-<div class="product-featured">
+                <div class="product-featured">
+                  <h2 class="title">Oferta del día - Productos Veterinarios</h2>
 
-  <h2 class="title">Oferta del día - Productos Veterinarios</h2>
+                  <div class="showcase-wrapper has-scrollbar">
+                    <div class="showcase-container">
+                      <div class="showcase">
+                        <div class="showcase-banner">
+                          <img
+                            src="./assets/images/products/1.jpg"
+                            alt="Champú para mascotas"
+                            class="showcase-img"
+                          />
+                        </div>
 
-  <div class="showcase-wrapper has-scrollbar">
+                        <div class="showcase-content">
+                          <div class="showcase-rating">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-outline"></ion-icon>
+                            <ion-icon name="star-outline"></ion-icon>
+                          </div>
 
-    <div class="showcase-container">
+                          <a href="#">
+                            <h3 class="showcase-title">Champú para mascotas</h3>
+                          </a>
 
-      <div class="showcase">
-        
-        <div class="showcase-banner">
-          <img src="./assets/images/products/1.jpg" alt="Champú para mascotas" class="showcase-img">
-        </div>
+                          <p class="showcase-desc">
+                            Cuida el pelaje de tu mascota con nuestro champú
+                            especializado.
+                          </p>
 
-        <div class="showcase-content">
-          
-          <div class="showcase-rating">
-            <ion-icon name="star"></ion-icon>
-            <ion-icon name="star"></ion-icon>
-            <ion-icon name="star"></ion-icon>
-            <ion-icon name="star-outline"></ion-icon>
-            <ion-icon name="star-outline"></ion-icon>
-          </div>
+                          <div class="price-box">
+                            <p class="price">Bs.150.00</p>
+                            <del>Bs.200.00</del>
+                          </div>
 
-          <a href="#">
-            <h3 class="showcase-title">Champú para mascotas</h3>
-          </a>
+                          <button class="add-cart-btn">
+                            Agregar al carrito
+                          </button>
 
-          <p class="showcase-desc">
-            Cuida el pelaje de tu mascota con nuestro champú especializado.
-          </p>
+                          <div class="showcase-status">
+                            <div class="wrapper">
+                              <p>Vendidos: <b>20</b></p>
 
-          <div class="price-box">
-            <p class="price">Bs.150.00</p>
-            <del>Bs.200.00</del>
-          </div>
+                              <p>Disponibles: <b>40</b></p>
+                            </div>
 
-          <button class="add-cart-btn">Agregar al carrito</button>
+                            <div class="showcase-status-bar"></div>
+                          </div>
 
-          <div class="showcase-status">
-            <div class="wrapper">
-              <p>
-                Vendidos: <b>20</b>
-              </p>
+                          <div class="countdown-box">
+                            <p class="countdown-desc">
+                              ¡Apresúrate! Oferta termina en:
+                            </p>
 
-              <p>
-                Disponibles: <b>40</b>
-              </p>
-            </div>
+                            <div class="countdown">
+                              <div class="countdown-content">
+                                <p class="display-number">360</p>
+                                <p class="display-text">Días</p>
+                              </div>
 
-            <div class="showcase-status-bar"></div>
-          </div>
+                              <div class="countdown-content">
+                                <p class="display-number">24</p>
+                                <p class="display-text">Horas</p>
+                              </div>
 
-          <div class="countdown-box">
+                              <div class="countdown-content">
+                                <p class="display-number">59</p>
+                                <p class="display-text">Min</p>
+                              </div>
 
-            <p class="countdown-desc">
-              ¡Apresúrate! Oferta termina en:
-            </p>
+                              <div class="countdown-content">
+                                <p class="display-number">00</p>
+                                <p class="display-text">Seg</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
-            <div class="countdown">
+                    <div class="showcase-container">
+                      <div class="showcase">
+                        <div class="showcase-banner">
+                          <img
+                            src="./assets/images/products/2.jpg"
+                            alt="Accesorios para mascotas"
+                            class="showcase-img"
+                          />
+                        </div>
 
-              <div class="countdown-content">
-                <p class="display-number">360</p>
-                <p class="display-text">Días</p>
-              </div>
+                        <div class="showcase-content">
+                          <div class="showcase-rating">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-outline"></ion-icon>
+                            <ion-icon name="star-outline"></ion-icon>
+                          </div>
 
-              <div class="countdown-content">
-                <p class="display-number">24</p>
-                <p class="display-text">Horas</p>
-              </div>
+                          <a href="#">
+                            <h3 class="showcase-title">
+                              Accesorios para mascotas
+                            </h3>
+                          </a>
 
-              <div class="countdown-content">
-                <p class="display-number">59</p>
-                <p class="display-text">Min</p>
-              </div>
+                          <p class="showcase-desc">
+                            Descubre nuestros accesorios únicos para el cuidado
+                            de tus mascotas.
+                          </p>
 
-              <div class="countdown-content">
-                <p class="display-number">00</p>
-                <p class="display-text">Seg</p>
-              </div>
+                          <div class="price-box">
+                            <p class="price">Bs.199.00</p>
+                            <del>Bs.250.00</del>
+                          </div>
 
-            </div>
+                          <button class="add-cart-btn">
+                            Agregar al carrito
+                          </button>
 
-          </div>
+                          <div class="showcase-status">
+                            <div class="wrapper">
+                              <p>Vendidos: <b>15</b></p>
 
-        </div>
+                              <p>Disponibles: <b>40</b></p>
+                            </div>
 
-      </div>
+                            <div class="showcase-status-bar"></div>
+                          </div>
 
-    </div>
+                          <div class="countdown-box">
+                            <p class="countdown-desc">
+                              ¡Apresúrate! Oferta termina en:
+                            </p>
 
-    <div class="showcase-container">
-    
-      <div class="showcase">
-    
-        <div class="showcase-banner">
-          <img src="./assets/images/products/2.jpg" alt="Accesorios para mascotas" class="showcase-img">
-        </div>
-    
-        <div class="showcase-content">
-    
-          <div class="showcase-rating">
-            <ion-icon name="star"></ion-icon>
-            <ion-icon name="star"></ion-icon>
-            <ion-icon name="star"></ion-icon>
-            <ion-icon name="star-outline"></ion-icon>
-            <ion-icon name="star-outline"></ion-icon>
-          </div>
-    
-          <a href="#">
-            <h3 class="showcase-title">Accesorios para mascotas</h3>
-          </a>
-    
-          <p class="showcase-desc">
-            Descubre nuestros accesorios únicos para el cuidado de tus mascotas.
-          </p>
-    
-          <div class="price-box">
-            <p class="price">Bs.199.00</p>
-            <del>Bs.250.00</del>
-          </div>
-    
-          <button class="add-cart-btn">Agregar al carrito</button>
-    
-          <div class="showcase-status">
-            <div class="wrapper">
-              <p> Vendidos: <b>15</b> </p>
-    
-              <p> Disponibles: <b>40</b> </p>
-            </div>
-    
-            <div class="showcase-status-bar"></div>
-          </div>
-    
-          <div class="countdown-box">
-    
-            <p class="countdown-desc">¡Apresúrate! Oferta termina en:</p>
-    
-            <div class="countdown">
-              <div class="countdown-content">
-                <p class="display-number">360</p>
-                <p class="display-text">Días</p>
-              </div>
-    
-              <div class="countdown-content">
-                <p class="display-number">24</p>
-                <p class="display-text">Horas</p>
-              </div>
-    
-              <div class="countdown-content">
-                <p class="display-number">59</p>
-                <p class="display-text">Min</p>
-              </div>
-    
-              <div class="countdown-content">
-                <p class="display-number">00</p>
-                <p class="display-text">Seg</p>
-              </div>
-            </div>
-    
-          </div>
-    
-        </div>
-    
-      </div>
-    
-    </div>
+                            <div class="countdown">
+                              <div class="countdown-content">
+                                <p class="display-number">360</p>
+                                <p class="display-text">Días</p>
+                              </div>
 
-  </div>
+                              <div class="countdown-content">
+                                <p class="display-number">24</p>
+                                <p class="display-text">Horas</p>
+                              </div>
 
-</div>
+                              <div class="countdown-content">
+                                <p class="display-number">59</p>
+                                <p class="display-text">Min</p>
+                              </div>
 
-<br>
-          <!--
+                              <div class="countdown-content">
+                                <p class="display-number">00</p>
+                                <p class="display-text">Seg</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <br />
+                <!--
             - PRODUCT MINIMAL
           -->
 
-<section class="section offer" aria-label="oferta">
-  <div class="container">
+                <section class="section offer" aria-label="oferta">
+                  <div class="container">
+                    <ul class="grid-list">
+                      <li>
+                        <div
+                          class="offer-card has-bg-image img-holder"
+                          style="
+                            background-image: url('./assets/images/offer-banner-1.jpg');
+                            --width: 540;
+                            --height: 374;
+                          "
+                        >
+                          <p class="card-subtitle">
+                            Artículos seleccionados. Solo en línea.
+                          </p>
 
-<ul class="grid-list">
+                          <h3 class="h3 card-title">
+                            Ofertas de <span class="span">Verano</span>
+                          </h3>
 
-  <li>
-    <div class="offer-card has-bg-image img-holder"
-      style="background-image: url('./assets/images/offer-banner-1.jpg'); --width: 540; --height: 374;">
+                          <a href="#" class="btn">Comprar</a>
+                        </div>
+                      </li>
 
-      <p class="card-subtitle">Artículos seleccionados. Solo en línea.</p>
+                      <li>
+                        <div
+                          class="offer-card has-bg-image img-holder"
+                          style="
+                            background-image: url('./assets/images/offer-banner-2.jpg');
+                            --width: 540;
+                            --height: 374;
+                          "
+                        >
+                          <p class="card-subtitle">Premios y Aseo</p>
 
-      <h3 class="h3 card-title">
-        Ofertas de <span class="span">Verano</span>
-      </h3>
+                          <h3 class="h3 card-title">
+                            Mima a tu verdadero <span class="span">amor</span>
+                          </h3>
 
-      <a href="#" class="btn">Comprar</a>
+                          <a href="#" class="btn">Comprar</a>
+                        </div>
+                      </li>
 
-    </div>
-  </li>
+                      <li>
+                        <div
+                          class="offer-card has-bg-image img-holder"
+                          style="
+                            background-image: url('./assets/images/offer-banner-3.jpg');
+                            --width: 540;
+                            --height: 374;
+                          "
+                        >
+                          <p class="card-subtitle">
+                            Nuestra Marca que te Encantará
+                          </p>
 
-  <li>
-    <div class="offer-card has-bg-image img-holder"
-      style="background-image: url('./assets/images/offer-banner-2.jpg'); --width: 540; --height: 374;">
+                          <h3 class="h3 card-title">
+                            Novedades de este <span class="span">año</span>
+                          </h3>
 
-      <p class="card-subtitle">Premios y Aseo</p>
-
-      <h3 class="h3 card-title">
-        Mima a tu verdadero <span class="span">amor</span>
-      </h3>
-
-      <a href="#" class="btn">Comprar</a>
-
-    </div>
-  </li>
-
-  <li>
-    <div class="offer-card has-bg-image img-holder"
-      style="background-image: url('./assets/images/offer-banner-3.jpg'); --width: 540; --height: 374;">
-
-      <p class="card-subtitle">Nuestra Marca que te Encantará</p>
-
-      <h3 class="h3 card-title">
-        Novedades de este <span class="span">año</span>
-      </h3>
-
-      <a href="#" class="btn">Comprar</a>
-
-    </div>
-  </li>
-
-</ul>
-
-
-  </div>
-</section>
-
-
-      </section>
+                          <a href="#" class="btn">Comprar</a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </section>
+              </section>
+            </div>
           </div>
         </div>
       </div>
+    </main>
 
+    <div class="banner">
+      <div class="container">
+        <div class="slider-container has-scrollbar">
+          <div class="slider-item">
+            <img
+              src="./assets/images/banner-2.jpg"
+              alt="accessories for pets"
+              class="banner-img"
+            />
+            <div class="banner-content">
+              <p class="banner-subtitle">Accesorios de moda</p>
+              <h2 class="banner-title">Accesorios modernos para mascotas</h2>
+              <p class="banner-text">desde &dollar; <b>5</b>.00</p>
+              <a href="#" class="banner-btn">Comprar ahora</a>
+            </div>
+          </div>
+
+          <div class="slider-item">
+            <img
+              src="./assets/images/banner-1.jpg"
+              alt="food sale for pets"
+              class="banner-img"
+            />
+            <div class="banner-content">
+              <p class="banner-subtitle">Productos en tendencia</p>
+              <h2 class="banner-title">Venta de comida para mascotas</h2>
+              <p class="banner-text">desde &dollar; <b>10</b>.00</p>
+              <a href="#" class="banner-btn">Comprar ahora</a>
+            </div>
+          </div>
+
+          <div class="slider-item">
+            <img
+              src="./assets/images/banner-3.jpg"
+              alt="health products for pets"
+              class="banner-img"
+            />
+            <div class="banner-content">
+              <p class="banner-subtitle">Ofertas especiales</p>
+              <h2 class="banner-title">Productos de salud para mascotas</h2>
+              <p class="banner-text">desde &dollar; <b>19</b>.99</p>
+              <a href="#" class="banner-btn">Comprar ahora</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-  </main>
-
-
-  <div class="banner">
-
-  <div class="container">
-    
-    <div class="slider-container has-scrollbar">
-
-      <div class="slider-item">
-        <img src="./assets/images/banner-2.jpg" alt="accessories for pets" class="banner-img">
-        <div class="banner-content">
-          <p class="banner-subtitle">Accesorios de moda</p>
-          <h2 class="banner-title">Accesorios modernos para mascotas</h2>
-          <p class="banner-text">
-            desde &dollar; <b>5</b>.00
-          </p>
-          <a href="#" class="banner-btn">Comprar ahora</a>
-        </div>
-      </div>
-
-      <div class="slider-item">
-        <img src="./assets/images/banner-1.jpg" alt="food sale for pets" class="banner-img">
-        <div class="banner-content">
-          <p class="banner-subtitle">Productos en tendencia</p>
-          <h2 class="banner-title">Venta de comida para mascotas</h2>
-          <p class="banner-text">
-            desde &dollar; <b>10</b>.00
-          </p>
-          <a href="#" class="banner-btn">Comprar ahora</a>
-        </div>
-      </div>
-
-      <div class="slider-item">
-        <img src="./assets/images/banner-3.jpg" alt="health products for pets" class="banner-img">
-        <div class="banner-content">
-          <p class="banner-subtitle">Ofertas especiales</p>
-          <h2 class="banner-title">Productos de salud para mascotas</h2>
-          <p class="banner-text">
-            desde &dollar; <b>19</b>.99
-          </p>
-          <a href="#" class="banner-btn">Comprar ahora</a>
-        </div>
-      </div>
-
-
-
-
-    </div>
-  </div>
-
-</div>
-
-
-  <!--
+    <!--
     - FOOTER
   -->
 
-<footer class="footer" style="background-image: url('./assets/images/footer-bg.jpg')">
+    <footer
+      class="footer"
+      style="background-image: url('./assets/images/footer-bg.jpg')"
+    >
+      <div class="footer-top section">
+        <div class="container">
+          <div class="footer-brand">
+            <a href="#" class="logo">MegaPet</a>
 
-  <div class="footer-top section">
-    <div class="container">
+            <p class="footer-text">
+              Si tienes alguna pregunta, contáctanos en
+              <a href="mailto:support@megapet.com" class="link"
+                >support@megapet.com</a
+              >
+            </p>
 
-      <div class="footer-brand">
+            <ul class="contact-list">
+              <li class="contact-item">
+                <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
 
-        <a href="#" class="logo">MegaPet</a>
+                <address class="address">
+                  Av. Principal 123, Ciudad, País
+                </address>
+              </li>
 
-        <p class="footer-text">
-          Si tienes alguna pregunta, contáctanos en <a href="mailto:support@megapet.com" class="link">support@megapet.com</a>
-        </p>
+              <li class="contact-item">
+                <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
 
-        <ul class="contact-list">
+                <a href="tel:+1234567890" class="contact-link"
+                  >(+1) 234-567-890</a
+                >
+              </li>
+            </ul>
 
-          <li class="contact-item">
-            <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+            <ul class="social-list">
+              <li>
+                <a href="#" class="social-link">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+              </li>
 
-            <address class="address">
-              Av. Principal 123, Ciudad, País
-            </address>
-          </li>
+              <li>
+                <a href="#" class="social-link">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+              </li>
 
-          <li class="contact-item">
-            <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
+              <li>
+                <a href="#" class="social-link">
+                  <ion-icon name="logo-pinterest"></ion-icon>
+                </a>
+              </li>
 
-            <a href="tel:+1234567890" class="contact-link">(+1) 234-567-890</a>
-          </li>
+              <li>
+                <a href="#" class="social-link">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+              </li>
+            </ul>
+          </div>
 
-        </ul>
+          <ul class="footer-list">
+            <li>
+              <p class="footer-list-title">Corporativo</p>
+            </li>
 
-        <ul class="social-list">
+            <li>
+              <a href="#" class="footer-link">Carreras</a>
+            </li>
 
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </a>
-          </li>
+            <li>
+              <a href="#" class="footer-link">Nosotros</a>
+            </li>
 
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </a>
-          </li>
+            <li>
+              <a href="#" class="footer-link">Contáctanos</a>
+            </li>
 
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-pinterest"></ion-icon>
-            </a>
-          </li>
+            <li>
+              <a href="#" class="footer-link">FAQs</a>
+            </li>
 
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
+            <li>
+              <a href="#" class="footer-link">Proveedores</a>
+            </li>
 
-        </ul>
+            <li>
+              <a href="#" class="footer-link">Programa de Afiliados</a>
+            </li>
+          </ul>
 
+          <ul class="footer-list">
+            <li>
+              <p class="footer-list-title">Información</p>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Tienda Online</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Política de Privacidad</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Política de Devolución</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Política de Envío</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Términos de Servicio</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Seguimiento de Pedido</a>
+            </li>
+          </ul>
+
+          <ul class="footer-list">
+            <li>
+              <p class="footer-list-title">Servicios</p>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Aseo</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link"
+                >Entrenamiento Positivo para Perros</a
+              >
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Servicios Veterinarios</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Seguro para Mascotas</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Adopción de Mascotas</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Centro de Recursos</a>
+            </li>
+          </ul>
+        </div>
       </div>
 
-      <ul class="footer-list">
+      <div class="footer-bottom">
+        <div class="container">
+          <p class="copyright">
+            &copy; 2024 Hecho con ♥ por
+            <a href="#" class="copyright-link">MegaPet.</a>
+          </p>
 
-        <li>
-          <p class="footer-list-title">Corporativo</p>
-        </li>
-
-        <li>
-          <a href="#" class="footer-link">Carreras</a>
-        </li>
-
-        <li>
-          <a href="#" class="footer-link">Nosotros</a>
-        </li>
-
-        <li>
-          <a href="#" class="footer-link">Contáctanos</a>
-        </li>
-
-        <li>
-          <a href="#" class="footer-link">FAQs</a>
-        </li>
-
-        <li>
-          <a href="#" class="footer-link">Proveedores</a>
-        </li>
-
-        <li>
-          <a href="#" class="footer-link">Programa de Afiliados</a>
-        </li>
-
-      </ul>
-
-      <ul class="footer-list">
-
-        <li>
-          <p class="footer-list-title">Información</p>
-        </li>
-
-        <li>
-          <a href="#" class="footer-link">Tienda Online</a>
-        </li>
-
-        <li>
-          <a href="#" class="footer-link">Política de Privacidad</a>
-        </li>
-
-        <li>
-          <a href="#" class="footer-link">Política de Devolución</a>
-        </li>
-
-        <li>
-          <a href="#" class="footer-link">Política de Envío</a>
-        </li>
-
-        <li>
-          <a href="#" class="footer-link">Términos de Servicio</a>
-        </li>
-
-        <li>
-          <a href="#" class="footer-link">Seguimiento de Pedido</a>
-        </li>
-
-      </ul>
-
-      <ul class="footer-list">
-
-        <li>
-          <p class="footer-list-title">Servicios</p>
-        </li>
-
-        <li>
-          <a href="#" class="footer-link">Aseo</a>
-        </li>
-
-        <li>
-          <a href="#" class="footer-link">Entrenamiento Positivo para Perros</a>
-        </li>
-
-        <li>
-          <a href="#" class="footer-link">Servicios Veterinarios</a>
-        </li>
-
-        <li>
-          <a href="#" class="footer-link">Seguro para Mascotas</a>
-        </li>
-
-        <li>
-          <a href="#" class="footer-link">Adopción de Mascotas</a>
-        </li>
-
-        <li>
-          <a href="#" class="footer-link">Centro de Recursos</a>
-        </li>
-
-      </ul>
-
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <div class="container">
-
-      <p class="copyright">
-        &copy; 2024 Hecho con ♥ por <a href="#" class="copyright-link">MegaPet.</a>
-      </p>
-
-      <img src="./assets/images/payment.png" width="397" height="32" loading="lazy" alt="método de pago" class="img">
-
-    </div>
-  </div>
-
-</footer>
-
-
+          <img
+            src="./assets/images/payment.png"
+            width="397"
+            height="32"
+            loading="lazy"
+            alt="método de pago"
+            class="img"
+          />
+        </div>
+      </div>
+    </footer>
 
     <!-- 
     - #BACK TO TOP
   -->
 
-  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
-    <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
-  </a>
+    <a
+      href="#top"
+      class="back-top-btn"
+      aria-label="back to top"
+      data-back-top-btn
+    >
+      <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+    </a>
 
-
-
-  <!--
+    <!--
     - custom js link
   -->
-  <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 
-  <!--
+    <!--
     - ionicon link
   -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-</body>
-
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
 </html>
