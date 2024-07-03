@@ -1081,23 +1081,60 @@
       - BANNER
     -->
 
+<div class="banner">
 
+  <div class="container">
+    
+    <div class="slider-container has-scrollbar">
 
-    <!-- se añadio --> 
-    <div class="slider-container" style="margin-right:10%; margin-left:12%; margin-top: 1%;">
-        <div class="slider">
-            <div class="slides">
-                <a href="https://www.example.com/link1" target="_blank"><img src="web/bg1.png" alt="Imagen 1"></a>
-                <a href="https://www.example.com/link2" target="_blank"><img src="web/bg2.png" alt="Imagen 2"></a>
-                <a href="https://www.example.com/link3" target="_blank"><img src="web/bg3.png" alt="Imagen 3"></a>
-            </div>
-            <button class="prev">&#10094;</button>
-            <button class="next">&#10095;</button>
+      <div class="slider-item">
+        <img src="./assets/images/banner-1.jpg" alt="food sale for pets" class="banner-img">
+        <div class="banner-content">
+          <p class="banner-subtitle">Productos en tendencia</p>
+          <h2 class="banner-title">Venta de comida para mascotas</h2>
+          <p class="banner-text">
+            desde &dollar; <b>10</b>.00
+          </p>
+          <a href="#" class="banner-btn">Comprar ahora</a>
         </div>
-    </div>
+      </div>
 
-    <script>
-        const slides = document.querySelector('.slides');
+      <div class="slider-item">
+        <img src="./assets/images/banner-2.jpg" alt="accessories for pets" class="banner-img">
+        <div class="banner-content">
+          <p class="banner-subtitle">Accesorios de moda</p>
+          <h2 class="banner-title">Accesorios modernos para mascotas</h2>
+          <p class="banner-text">
+            desde &dollar; <b>5</b>.00
+          </p>
+          <a href="#" class="banner-btn">Comprar ahora</a>
+        </div>
+      </div>
+
+      <div class="slider-item">
+        <img src="./assets/images/banner-3.jpg" alt="health products for pets" class="banner-img">
+        <div class="banner-content">
+          <p class="banner-subtitle">Ofertas especiales</p>
+          <h2 class="banner-title">Productos de salud para mascotas</h2>
+          <p class="banner-text">
+            desde &dollar; <b>19</b>.99
+          </p>
+          <a href="#" class="banner-btn">Comprar ahora</a>
+        </div>
+      </div>
+
+    </div>
+    
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+
+  </div>
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const slides = document.querySelector('.slider-container');
         const prevBtn = document.querySelector('.prev');
         const nextBtn = document.querySelector('.next');
         let index = 0;
@@ -1120,8 +1157,23 @@
         prevBtn.addEventListener('click', prevSlide);
 
         setInterval(nextSlide, 3000); // Cambia la imagen cada 3 segundos
+    });
+</script>
 
-    </script>
+
+    <!-- se añadio --> 
+    <!-- <div class="slider-container" style="margin-right:10%; margin-left:12%; margin-top: 1%;">
+        <div class="slider">
+            <div class="slides">
+                <a href="https://www.example.com/link1" target="_blank"><img src="assets/images/banner-1.jpg" alt="Imagen 1"></a>
+                <a href="https://www.example.com/link2" target="_blank"><img src="assets/images/banner-2.jpg" alt="Imagen 2"></a>
+                <a href="https://www.example.com/link3" target="_blank"><img src="assets/images/banner-3.jpg" alt="Imagen 3"></a>
+            </div>
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </div>
+    </div> -->
+
 
     
     <main style=" margin-right:10%; margin-left:12%; margin-top: 1%;">
@@ -1385,77 +1437,7 @@
 
     <!-- se añadio -->
 
-<div class="banner">
 
-  <div class="container">
-
-    <div class="slider-container has-scrollbar">
-
-      <div class="slider-item">
-
-        <img src="./assets/images/banner-1.jpg" alt="food sale for pets" class="banner-img">
-
-        <div class="banner-content">
-
-          <p class="banner-subtitle">Productos en tendencia</p>
-
-          <h2 class="banner-title">Venta de comida para mascotas</h2>
-
-          <p class="banner-text">
-            desde &dollar; <b>10</b>.00
-          </p>
-
-          <a href="#" class="banner-btn">Comprar ahora</a>
-
-        </div>
-
-      </div>
-
-      <div class="slider-item">
-
-        <img src="./assets/images/banner-2.jpg" alt="accessories for pets" class="banner-img">
-
-        <div class="banner-content">
-
-          <p class="banner-subtitle">Accesorios de moda</p>
-
-          <h2 class="banner-title">Accesorios modernos para mascotas</h2>
-
-          <p class="banner-text">
-            desde &dollar; <b>5</b>.00
-          </p>
-
-          <a href="#" class="banner-btn">Comprar ahora</a>
-
-        </div>
-
-      </div>
-
-      <div class="slider-item">
-
-        <img src="./assets/images/banner-3.jpg" alt="health products for pets" class="banner-img">
-
-        <div class="banner-content">
-
-          <p class="banner-subtitle">Ofertas especiales</p>
-
-          <h2 class="banner-title">Productos de salud para mascotas</h2>
-
-          <p class="banner-text">
-            desde &dollar; <b>19</b>.99
-          </p>
-
-          <a href="#" class="banner-btn">Comprar ahora</a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
 
 
 
