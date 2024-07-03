@@ -17,7 +17,7 @@
     - custom css link
   -->
   <link rel="stylesheet" href="./assets/css/style-prefix.css">
-  <!-- <link rel="stylesheet" href="./assets/css/css.css"> -->
+  <link rel="stylesheet" href="./assets/css/css.css">
   <!--
     - google font link
   -->
@@ -29,23 +29,7 @@
 </head>
 
     <style>
-    
-        /* .container {
-            width: 80%;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        } */
-
-
-        /* .cart {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-        } */
-
-
+  
         .carousel {
             position: relative;
             width: 100%;
@@ -149,13 +133,6 @@
         }
     </style>
 
-    <style>
-    </style>
-
-    <style>
-    </style>
-
-    
     <style>
         .grid-large {
             display: flex;
@@ -285,11 +262,6 @@
         document.querySelector('#toggle-animation').addEventListener('click', classToggle);
     </script>
 
-
-
-
-
-
 <body>
 
 
@@ -300,43 +272,27 @@
   -->
  <!-- <div class="modal" data-modal></div> -->
 <div class="modal" data-modal>
-
   <div class="modal-close-overlay" data-modal-overlay></div>
-
   <div class="modal-content">
-
     <button class="modal-close-btn" data-modal-close>
       <ion-icon name="close-outline"></ion-icon>
     </button>
-
     <div class="newsletter-img">
       <img src="./assets/images/brand-4.jpg" alt="Suscríbete al boletín" width="400" height="400">
     </div>
-
     <div class="newsletter">
-
       <form action="#">
-
         <div class="newsletter-header">
-
           <h3 class="newsletter-title">Suscríbete a Nuestro Boletín</h3>
-
           <p class="newsletter-desc">
             Suscríbete a <b>Nuestra Clínica Veterinaria</b> para recibir las últimas novedades y descuentos en productos para tus mascotas.
           </p>
-
         </div>
-
         <input type="email" name="email" class="email-field" placeholder="Correo Electrónico" required>
-
         <button type="submit" class="btn-newsletter">Suscribirse</button>
-
       </form>
-
     </div>
-
   </div>
-
 </div>
 
 
@@ -347,33 +303,26 @@
     - NOTIFICATION TOAST
   -->
 
-  <div class="notification-toast" data-toast>
+<div class="notification-toast" data-toast>
+  <button class="toast-close-btn" data-toast-close>
+    <ion-icon name="close-outline"></ion-icon>
+  </button>
+  <div class="toast-banner">
+    <img src="./assets/images/products/category-4.jpg" alt="Descripción de la comida para mascotas" width="80" height="70">
+  </div>
+  <div class="toast-detail">
+    <p class="toast-message">
+      ¡Nuevo producto disponible!
+    </p>
+    <p class="toast-title">
+      Comida Premium para Mascotas
+    </p>
+    <p class="toast-meta">
+      <time datetime="PT2M">hace 2 minutos</time>
+    </p>
+  </div>
+</div>
 
-    <button class="toast-close-btn" data-toast-close>
-      <ion-icon name="close-outline"></ion-icon>
-    </button>
-
-    <div class="toast-banner">
-      <img src="./assets/images/products/1.jpg" alt="descripcion de la comida" width="80" height="70">
-    </div>
-
-    <div class="toast-detail">
-
-      <p class="toast-message">
-        Comida
-      </p>
-
-      <p class="toast-title">
-        descripcion de la comida
-      </p>
-
-      <p class="toast-meta">
-        <time datetime="PT2M">2 Minutes</time> ago
-      </p>
-
-    </div>
-
-  </div> 
 
 
 
@@ -384,71 +333,51 @@
   -->
 
   <header>
-
     <div class="header-top">
-
       <div class="container advertising">
-
         <ul class="header-social-container">
-
           <li>
             <a href="#" class="social-link">
               <ion-icon name="logo-facebook"></ion-icon>
             </a>
           </li>
-
           <li>
             <a href="#" class="social-link">
               <ion-icon name="logo-twitter"></ion-icon>
             </a>
           </li>
-
           <li>
             <a href="#" class="social-link">
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
           </li>
-
           <li>
             <a href="#" class="social-link">
               <ion-icon name="logo-linkedin"></ion-icon>
             </a>
           </li>
-
         </ul>
 
-<div class="header-alert-news" style="background-color: #e91022; color: white; padding: 10px;">
-  <p><b>Obtén 12% de descuento en compras</b> superiores a Bs 269 con el cupón MAECUIDA</p>
-</div>
-        
+        <div class="header-alert-news" style="background-color: #e91022; color: white; padding: 10px;">
+          <p><b>Obtén 12% de descuento en compras</b> superiores a Bs 269 con el cupón MAECUIDA</p>
+        </div>
 
         <div class="header-top-actions">
-
           <select name="currency">
-
             <option value="usd">USD &dollar;</option>
             <option value="eur">EUR &euro;</option>
-
           </select>
-
           <select name="language">
-
             <option value="en-US">English</option>
             <option value="es-ES">Espa&ntilde;ol</option>
             <option value="fr">Fran&ccedil;ais</option>
-
           </select>
-
         </div>
-
       </div>
-
     </div>
 
     <div class="header-main">
-
       <div class="container">
-
         <a href="#" class="header-logo">
           <img src="./assets/images/logo/logo.png" alt="Megapet" width="90" height="50">
         </a>
@@ -458,37 +387,26 @@
           <button class="search-btn">
             <ion-icon name="search-outline"></ion-icon>
           </button>
-
         </div>
-
         <div class="header-user-actions">
-
           <button class="action-btn">
             <ion-icon name="person-outline"></ion-icon>
           </button>
-
           <button class="action-btn">
             <ion-icon name="heart-outline"></ion-icon>
             <span class="count">0</span>
           </button>
-
           <button class="action-btn">
             <ion-icon name="bag-handle-outline"></ion-icon>
             <span class="count">0</span>
           </button>
-
         </div>
-
       </div>
-
     </div>
 
     <nav class="desktop-navigation-menu">
-
       <div class="container">
-
         <ul class="desktop-menu-category-list">
-
           <li class="menu-category">
             <a href="#" class="menu-title">Home</a>
           </li>
@@ -522,12 +440,6 @@
         <a href="#">Dietas Especiales</a>
       </li>
 
-      <li class="panel-list-item">
-        <a href="#">
-          <img src="./assets/images/food-banner.jpg" alt="comida para cachorros" width="250" height="119">
-        </a>
-      </li>
-
     </ul>
 
     <ul class="dropdown-panel-list">
@@ -550,12 +462,6 @@
 
       <li class="panel-list-item">
         <a href="#">Interactivos</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">
-          <img src="./assets/images/toys-banner.jpg" alt="juguetes para cachorros" width="250" height="119">
-        </a>
       </li>
 
     </ul>
@@ -582,12 +488,6 @@
         <a href="#">Antipulgas</a>
       </li>
 
-      <li class="panel-list-item">
-        <a href="#">
-          <img src="./assets/images/care-banner.jpg" alt="cuidado de cachorros" width="250" height="119">
-        </a>
-      </li>
-
     </ul>
 
     <ul class="dropdown-panel-list">
@@ -610,12 +510,6 @@
 
       <li class="panel-list-item">
         <a href="#">Ropa</a>
-      </li>
-
-      <li class="panel-list-item">
-        <a href="#">
-          <img src="./assets/images/accessories-banner.jpg" alt="accesorios para cachorros" width="250" height="119">
-        </a>
       </li>
 
     </ul>
